@@ -1,0 +1,6 @@
+VERSION        :v7121 (06c0a662a25b)
+VERSION_STRING :v7121 (06c0a662a25b)
+TITLE          :2CC Tram Set v7121 (06c0a662a25b)
+FILENAME       :trams-2cc.grf
+REPO_HASH      :06c0a662a25b
+NEWGRF_VERSION :7121

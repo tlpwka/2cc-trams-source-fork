@@ -10,7 +10,8 @@ STR_PARAM_REFIT_TOWN	:Town cargo types only
 STR_PARAM_REFIT_ALL		:All cargo types
 STR_PARAM_MODELLIFE_NAME:Long model life
 STR_PARAM_MODELLIFE_DESC:Default: off. Each vehicle (except those introduced 2010 onwards) is available for purchase for 10 years. Enable this if you want to increase model life (purchase availability) to the full period that a vehicle was used in real life active service. Note that this will give a very long purchase list.
-
+STR_PARAM_SPEEDMOD_NAME: Speedmod
+STR_PARAM_SPEEDMOD_DESC: speedmod/100*speed, 1-5000
 STR_NAME_ADELHCLASS     :Adelaide H Class
 STR_NAME_ADELTYPEB      :Adelaide Type B Toast Rack
 STR_NAME_AMST491        :Amsterdam 491-550 'Drieasser'

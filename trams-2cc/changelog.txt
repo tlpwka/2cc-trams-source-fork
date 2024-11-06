@@ -1,0 +1,77 @@
+2CC Trams Changelog
+===================
+
+0.1.0-beta2 2015-09-26
+----------------------
+- Feature: dedicated graphics for depot and vehicle details window (closes #7759)
+- Feature: default model life of 10 years and parameter to disable that (closes #6990)
+- Change: increase vehicle life of 'Never Expire' vehicles to 28 years.
+- Fix (r51): model life of DresTatraT4D and LisbBrill
+- Fix: apply cargo_unit_weight factor to cargo refits (closes #7763)
+- Update: Translations
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 3 changes by SilverSurferZzZ
+  it_IT: 92 changes by Voyager1
+
+0.1.0-beta1 2015-09-07
+----------------------
+- Feature: all passenger trams (drawn so far)
+- Feature: cargo refit parameter
+- Feature: enable translations
+- Feature: makefile with code stub
+- Feature: new PHP codebase, with INI-based vehicle definitions
+- Feature: sorting of vehicles by year then name (closes #7142)
+- Feature: templates for vehicle in GUI windows
+- Change: enable devzone builds
+- Change: improve alignment a bit
+- Change: increase vehicle costs
+- Fix: Milan 7100 missing graphics
+- Fix: NewOLamm vehicle id
+- Fix: Sydney Variotram missing graphics
+- Fix: Toronto TLRV 2nd section length
+- Update: Translations
+  af_ZA: 36 changes by telanus
+  ca_ES: 36 changes by juanjo
+  de_DE: 36 changes by Auge
+  eo_EO: 14 changes by Lunate
+  eo_EO: 22 changes by Lunate
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 1 change by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 2 changes by SilverSurferZzZ
+  es_ES: 3 changes by SilverSurferZzZ
+  es_ES: 4 changes by SilverSurferZzZ
+  es_ES: 4 changes by SilverSurferZzZ
+  es_ES: 6 changes by SilverSurferZzZ
+  es_ES: 6 changes by SilverSurferZzZ
+  es_ES: 7 changes by SilverSurferZzZ
+  fi_FI: 36 changes by Arexander
+  fr_FR: 36 changes by arikover
+  hr_HR: 36 changes by Voyager1
+  hr_HR: 94 changes by Voyager1
+  it_IT: 2 changes by Snail
+  it_IT: 36 changes by Voyager1
+  ko_KR: 12 changes by gimel3830
+  ko_KR: 7 changes by kevin
+  lb_LU: 36 changes by Phreeze
+  nl_NL: 36 changes by foobar
+  nl_NL: 90 changes by foobar
+  ru_RU: 36 changes by aantono
+  zh_CN: 12 changes by DongFeng
+  zh_TW: 10 changes by siu238X

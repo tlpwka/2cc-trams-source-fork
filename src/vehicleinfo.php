@@ -118,7 +118,7 @@ function nml_vehicleinfo_from_ini($ini, $vehid) {
 		echo 'Warning: Invalid [property] speed set for "'.$vehid.'" (limit 0-514 km/h)' . PHP_EOL;
 		return FALSE;
 	}
-	$vehicleinfo['property']['speed'] = $ini['property']['speed'];
+	$vehicleinfo['property']['speed'] = $ini['property']['speed'].'*param_speedmod/100';
 	
 	//power
 	if (!isset($ini['property']['power']) || !is_numeric($ini['property']['power']) || ($ini['property']['power'] <= 0) || ($ini['property']['power'] > 2550)) {

@@ -47,6 +47,16 @@ grf {
 			def_value:	0;
 		}
 	}
+param {
+		 param_speedmod {
+			type:	int;
+			name:	string(STR_PARAM_SPEEDMOD_NAME);
+			desc:	string(STR_PARAM_SPEEDMOD_DESC);
+            min_value: 1;
+            max_value: 5000;
+            def_value: 100;
+            }
+	}
 }
 
 basecost {

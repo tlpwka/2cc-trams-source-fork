@@ -377,6 +377,7 @@ XZ_FILENAME        := $(TAR_FILENAME).xz
 ZIP_FILENAME       := $(VERSIONED_FILENAME).zip
 MD5_FILENAME       := $(DIR_NAME).md5
 MD5_SRC_FILENAME   ?= $(DIR_NAME).check.md5
+TAR_GENERATE        ?= $(BASE_FILENAME).tar
 
 # Creating file with checksum
 %.md5: $(GRF_FILE)
@@ -544,6 +545,16 @@ endif
 	$(_E) "[INSTALL] to $(INSTALL_DIR)"
 	$(_V) install -d $(INSTALL_DIR)
 	$(_V) install -m644 $< $(INSTALL_DIR)
+	
+# Make a bundle
+bundle: bundle_tar
+bundle_tar: $(BUNDLE_FILES)
+	@echo "[BUNDLE TAR]"
+	@ tar -cf ./$(DIR_NAME).tar ./$(GRF_FILE) --transform s/./$(DIR_NAME)/
+clean::
+	@echo "[CLEAN BUNDLE]"
+	@-rm -rf $(shell echo "$(REPO_NAME)*" | xargs | sed s/\ /_/g)
+
 
 # misc. convenience targets like 'langcheck'
 -include $(SCRIPT_DIR)/Makefile_misc
