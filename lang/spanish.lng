@@ -1,0 +1,133 @@
+##grflangid 0x04
+##plural 0
+##gender m f
+STR_GRF_NAME                    :2CC Tram Set {VERSION} Conjunto de tranvías 2CC
+STR_GRF_DESCRIPTION             :{BLACK}Licencia: {SILVER}GPL v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME    :Reforma
+STR_PARAM_REFIT_DESC    :Selecciona el/los tipo/s de reforma disponible/s para cada tranvía. Puedes escoger entre solo pasajeros (por defecto), los tipos de carga usados en las ciudades (pasajeros, correo y carga express) o todos los tipos de carga.
+STR_PARAM_REFIT_PASS    :Solo pasajeros
+STR_PARAM_REFIT_TOWN    :Solo los tipos de carga de la ciudad
+STR_PARAM_REFIT_ALL             :Todos los tipos de carga
+STR_PARAM_MODELLIFE_NAME:Vida real de los vehículos
+STR_PARAM_MODELLIFE_DESC:Por defecto: desactivado. Cada vehículo (excepto los introducidos de 2010 en adelante) está disponible para su compra durante 10 años. Habilita esta opción si quieres ampliar la vida del modelo (disponibilidad de compra) al periodo completo que el vehículo disfrutó en la vida real. Cuidado, se ha de tener en cuenta que esto creará una lista de compra muy larga.
+
+STR_NAME_ADELHCLASS     :Adelaide Clase H
+STR_NAME_ADELTYPEB      :Adelaide 'Toast Rack' Tipo B
+STR_NAME_AMST491        :Amsterdam 491-550 'Drieasser'
+STR_NAME_AMST8G         :Amsterdam 8G
+STR_NAME_BERLMAXIMUM24  :Berlin Maximum 24
+STR_NAME_BERLT24        :Berlin T24
+STR_NAME_BERNMEKARSKI   :Tranvía de aire comprimido -Bern Mékarski-
+STR_NAME_BLACBALLOON    :Tranvía Blackpool Balloon
+STR_NAME_BOSTTYPE7      :Boston MBTA Tipo 7 LRV
+STR_NAME_BRNOTATRAK2    :Brno Tatra K2
+STR_NAME_BRNOTATRAKT85D :Brno -Tatra KT85D-
+STR_NAME_BUDALORINCI    :Tranvía -Budapest a Lőrinci-
+STR_NAME_CAGLSKODA06T   :Cagliari Škoda 06T
+STR_NAME_CHAN200SERIES  :Changchun 200 series
+STR_NAME_CHRIROWANPATENT:-Christchurch 'Rowan Patent'- con motor a vapor
+STR_NAME_CLEVINTERURBANSTANDARD:Interurbano estándar de madera -Cleveland-
+STR_NAME_CLEVPETERWITT  :'Peter Witt' con Entrada Central -Cleveland-
+STR_NAME_CLUJPESA120NA  :Cluj PESA 120Na
+STR_NAME_CUIACAFURBOS3  :Cuiaba CAF Urbos 3
+STR_NAME_DALIDL8000     :Dalian -DL8000-
+STR_NAME_DRESTATRAT4D   :Dresden -Tatra T4D-
+STR_NAME_DRESTATRAT6A2  :Dresden -Tatra T6A2-
+STR_NAME_DUBRTRAM       :Tranvía Dubrovnik
+STR_NAME_FRANPTW        :Frankfurt P-Tw
+STR_NAME_GOTHMB01       :Gothenburg MB01
+STR_NAME_HAGUPCC1200    :The Hague PCC 1200
+STR_NAME_HELS203        :Helsinki 203-218
+STR_NAME_HONGDOUBLEDECK :Tranvía de dos pisos de Hong Kong
+STR_NAME_HOUSS70        :Houston METRORail S70
+STR_NAME_INDICOACHPARLOR:Interurbano de alta velocidad -Indianapolis ACF Coach-Parlor-
+STR_NAME_ISTAALSTOMX04  :Istanbul Alstom Citadis X-04
+STR_NAME_KOLKTRAM       :Tranvía Kolkata
+STR_NAME_KRAKSN1        :Krakow Sanok SN1
+STR_NAME_LISBBRILL      :Lisboa -Brill 203-282-
+STR_NAME_LODZHERBRAND   :Coche -Lodz Herbrand-
+STR_NAME_LONDCR4000     :Londres -Tramlink CR4000 Flexity Swift-
+STR_NAME_LONDJOHNGRANTHAMS:Coche a vapor -London John Grantham's-
+STR_NAME_LOSAAMERITRAM300:AmeriTram 300 -Los Ángeles-
+STR_NAME_LVIVT5L64      :Lviv -Elektron T5L64-
+STR_NAME_LVIVTATRAKT4   :Lviv -Tatra KT4-
+STR_NAME_MANCT68        :T-68 -Manchester-
+STR_NAME_MANCWILKINSONPATENT:'Wilkinson Patent' -Manchester-
+STR_NAME_MANITATRART8D5 :Manila -Tatra RT8D5-
+STR_NAME_MANX4          :Coche eléctrico Manx 4-9
+STR_NAME_MELBABCLASS    :Melbourne Clase A-B 'California Combination'
+STR_NAME_MELBACLASS     :Melbourne Clase A
+STR_NAME_MELBBCLASS     :Melbourne Clase B
+STR_NAME_MELBD1CLASS    :Melbourne D1 Clase Combino
+STR_NAME_MELBWCLASS     :Melbourne Clase W
+STR_NAME_MELBZ1CLASS    :Melbourne Clase Z1
+STR_NAME_MILA1500       :Milan ATM Clase 1500
+STR_NAME_MILA4700       :Milan ATM 4700
+STR_NAME_MILA7100       :Milan ATM 7100 Sirio
+STR_NAME_MOSCKM         :Tranvía de Moscú -KM-
+STR_NAME_MOSCKTM5       :Tranvía de Moscú KTM-5
+STR_NAME_MOSCMTV82A     :Tranvía de Moscú MTV-82A
+STR_NAME_MOSCOERLIKON   :Tranvía de Moscú -Oerlikon-
+STR_NAME_MOSCR1         :Tranvía de Moscú -R1-
+STR_NAME_NAGA1300SERIES :Nagasaki 1300 Series
+STR_NAME_NAGA5000SERIES :Nagasaki 5000 Series
+STR_NAME_NANTINCENTRO   :Nantes Incentro
+STR_NAME_NANTMEKARSKI   :Tranvía de aire comprimido -Nantes Mékarski-
+STR_NAME_NANTESTFS1     :Nantes TFS-1
+STR_NAME_NEWOLAMM       :Tranvía -New Orleans Lamm Fireless- con motor a vapor
+STR_NAME_OSLOSL79       :Oslo SL79
+STR_NAME_OSLOSM53       :Oslo SM53
+STR_NAME_OSLOTYPES      :Oslo Tipo S
+STR_NAME_OSTRVARIOLF    :Ostrava Vario LF
+STR_NAME_PARILAMMFRANCQ :Tranvía -Paris Lamm & Francq Fireless- con motor a vapor
+STR_NAME_PARIPURREY     :Tranvía a vapor de dos pisos -Paris Purrey-
+STR_NAME_PAVLKTM8       :Pavlodar KTM-8
+STR_NAME_PHILKCAR       :Coche 'K' -Philadelphia KHI-
+STR_NAME_PORTPSIUNITED100:Tranvía de Portland -PSI United Streetcar 100-
+STR_NAME_PORTTYPE2      :Portland MAX Tipo 2 SD600A
+STR_NAME_PRAGSKODA15T   :Prague Škoda 15T ForCity
+STR_NAME_PRAGTATRAT2    :Prague Tatra T2
+STR_NAME_PYONTATRAT6B5  :Pyongyang -Tatra T6B5-
+STR_NAME_RICHSPRAGUE    :Tranvía de Richmond -Sprague- con motor eléctrico
+STR_NAME_ROTT21         :Rotterdam 21-70 'Drieramers'
+STR_NAME_SANFLRV2       :San Francisco MUNI LRV2
+STR_NAME_SANFS200       :San Francisco MUNI S200
+STR_NAME_SANFUSSLRV     :San Francisco MUNI USSLRV
+STR_NAME_SAPPM100       :Sapporo M100
+STR_NAME_SARATATRAT3YU  :Sarajevo -Tatra T3YU-
+STR_NAME_STPEKRAUSS     :Tranvía -St. Petersburg Krauss- con motor a vapor
+STR_NAME_STPELM2008     :St. Petersburg LM-2008
+STR_NAME_STPELM33       :St. Petersburg LM-33 'American'
+STR_NAME_STPELM49       :St. Petersburg LM-49 'Elephant'
+STR_NAME_STPELM57       :St. Petersburg LM-57 'Dandy'
+STR_NAME_STPELM68       :St. Petersburg LM-68 'Aquarium'
+STR_NAME_STPEMB         :Coche motorizado -St. Petersburg MB-
+STR_NAME_STRASEUROTRAM  :Estrasburgo -Eurotram-
+STR_NAME_STUTSDT8       :Stuttgart S-DT 8
+STR_NAME_SYDNBALDWIN    :Tranvía de Sídney -Baldwin- con motor a vapor
+STR_NAME_SYDNCCLASS     :Sydney Clase C -Single Truck Saloon-
+STR_NAME_SYDNLPCLASS    :Sydney Clase L-P
+STR_NAME_SYDNRCLASS     :Sydney Clase R
+STR_NAME_SYDNVARIOTRAM  :Sydney Variotram
+STR_NAME_TACOSKODA10T   :Tacoma Škoda 10T
+STR_NAME_TASHKTM19      :Taskent -KTM-19-
+STR_NAME_TOROALRV       :Toronto Transit ALRV
+STR_NAME_TOROBIGWITT    :Toronto Transit 'Big Witt'
+STR_NAME_TOROCLRV       :Toronto Transit CLRV
+STR_NAME_TOROPCA7CLASS  :Toronto Transit PCC Clase A-7
+STR_NAME_TOROPCCA1CLASS :Toronto Transit PCC Clase A-1
+STR_NAME_TOROTLRV       :Toronto Transit Flexity Outlook TLRV
+STR_NAME_TOSA100IIISERIES:Tosa 100-III Series
+STR_NAME_TOSA200IISERIES:Tosa 200-II Series
+STR_NAME_TRIESERIE429   :Trieste -Serie 429-448-
+STR_NAME_TUNITW6000     :Tunis TW6000
+STR_NAME_VIENTW1        :Vienna SB Tw 1-15
+STR_NAME_VIENTW2        :Vienna SB Tw 20-29
+STR_NAME_VIENTYPEB      :Vienna Tipo B
+STR_NAME_VIENTYPEL      :Vienna Tipo L
+STR_NAME_VIENULF        :Vienna Ultra Low Floor
+STR_NAME_ZAGRTMK2200    :Zagreb CroTram TMK 2200
+STR_NAME_ZURIBE44       :Zúrich -Be 4/4 estándar-
+STR_NAME_ZURICE44       :Zúrich -Ce 4/4 'Elefant'-

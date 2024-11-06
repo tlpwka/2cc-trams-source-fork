@@ -1,0 +1,92 @@
+##grflangid 0x35
+##plural 0
+STR_GRF_NAME                    :2CC Tram Set {VERSION}
+STR_GRF_DESCRIPTION             :{BLACK}Lisenssi: {SILVER}GPL v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME    :Sovitus
+STR_PARAM_REFIT_DESC    :Valitse raitiovaunuilla käytettävät sovitukset. Vaihtoehtoja ovat vain matkustajat (oletusarvo), rahdit, joita käytetään kaupungeissa (matkustajat, posti ja pikarahti), tai kaikki rahdit.
+STR_PARAM_REFIT_PASS    :Vain matkustajat
+STR_PARAM_REFIT_TOWN    :Vain kaupunkirahti
+STR_PARAM_REFIT_ALL             :Kaikki rahdit
+
+STR_NAME_ADELHCLASS     :Adelaide H-luokka
+STR_NAME_ADELTYPEB      :Adelaide B-tyyppi 'Toast Rack'
+STR_NAME_AMST491        :Amsterdam 491-550 'Drieasser'
+STR_NAME_AMST8G         :Amsterdam 8G
+STR_NAME_BERLMAXIMUM24  :Berliini Maximum 24
+STR_NAME_BERLT24        :Berliini T24
+STR_NAME_BERNMEKARSKI   :Bern Mékarski -paineilmaraitiovaunu
+STR_NAME_BLACBALLOON    :Blackpool Balloon -raitiovaunu
+STR_NAME_BRNOTATRAK2    :Brno Tatra K2
+STR_NAME_BRNOTATRAKT85D :Brno Tatra KT85D
+STR_NAME_BUDALORINCI    :Budapest Lőrinci -raitiovaunu
+STR_NAME_CAGLSKODA06T   :Cagliari Škoda 06T
+STR_NAME_CHAN200SERIES  :Changchun 200-sarja
+STR_NAME_CLEVINTERURBANSTANDARD:Cleveland Interurban -puuvaunu
+STR_NAME_CLEVPETERWITT  :Cleveland 'Peter Witt' keskisisäänkäynnillä
+STR_NAME_CLUJPESA120NA  :Cluj PESA 120Na
+STR_NAME_DALIDL8000     :Dalian DL8000
+STR_NAME_DRESTATRAT4D   :Dresden Tatra T4D
+STR_NAME_DUBRTRAM       :Dubrovnik-raitiovaunu
+STR_NAME_GOTHMB01       :Göteborg MB01
+STR_NAME_HAGUPCC1200    :Haag PCC 1200
+STR_NAME_HONGDOUBLEDECK :Hong Kong -kaksikerrosraitiovaunu
+STR_NAME_HOUSS70        :Houston METRORail S70
+STR_NAME_ISTAALSTOMX04  :Istanbul Alstom Citadis X-04
+STR_NAME_KOLKTRAM       :Kolkata-raitiovaunu
+STR_NAME_KRAKSN1        :Krakova Sanok SN1
+STR_NAME_LISBBRILL      :Lisbon Brill 203-282
+STR_NAME_LONDCR4000     :London Tramlink CR4000 Flexity Swift
+STR_NAME_LVIVT5L64      :Lviv Elektron T5L64
+STR_NAME_LVIVTATRAKT4   :Lviv Tatra KT4
+STR_NAME_MANCT68        :Manchester T-68
+STR_NAME_MANITATRART8D5 :Manila Tatra RT8D5
+STR_NAME_MANX4          :Manx Electric Car 4-9
+STR_NAME_MELBABCLASS    :Melbourne A-B-luokka 'California Combination'
+STR_NAME_MELBACLASS     :Melbourne A-luokka
+STR_NAME_MELBD1CLASS    :Melbourne D1-luokka Combino
+STR_NAME_MELBWCLASS     :Melbourne W-luokka
+STR_NAME_MELBZ1CLASS    :Melbourne Z1-luokka
+STR_NAME_MILA1500       :Milano ATM luokka 1500
+STR_NAME_MILA4700       :Milano ATM 4700
+STR_NAME_MILA7100       :Milan ATM 7100 Sirio
+STR_NAME_MOSCKM         :Moscow KM -raitiovaunu
+STR_NAME_MOSCKTM5       :Moscow KTM-5
+STR_NAME_MOSCOERLIKON   :Moscow Oerlikon -raitiovaunu
+STR_NAME_NAGA1300SERIES :Nagasaki 1300 -sarja
+STR_NAME_NAGA5000SERIES :Nagasaki 5000 -sarja
+STR_NAME_NANTMEKARSKI   :Nantes Mékarski -paineilmaraitiovaunu
+STR_NAME_OSLOSM53       :Oslo SM53
+STR_NAME_OSTRVARIOLF    :Ostrava Vario LF
+STR_NAME_PARIPURREY     :Paris Purrey -kaksikerroshöyryraitiovaunu
+STR_NAME_PAVLKTM8       :Pavlodar KTM-8
+STR_NAME_PORTPSIUNITED100:Portland PSI United 100 -raitiovaunu
+STR_NAME_PRAGSKODA15T   :Praha Škoda 15T ForCity
+STR_NAME_PYONTATRAT6B5  :Pjongjang Tatra T6B5
+STR_NAME_ROTT21         :Rotterdam 21-70 'Drieramers'
+STR_NAME_SANFLRV2       :San Francisco MUNI LRV2
+STR_NAME_SANFUSSLRV     :San Francisco MUNI USSLRV
+STR_NAME_SAPPM100       :Sapporo M100
+STR_NAME_STPELM33       :St. Petersburg LM-33 'American'
+STR_NAME_STPELM57       :St. Petersburg LM-57 'Dandy'
+STR_NAME_STPELM68       :St. Petersburg LM-68 'Aquarium'
+STR_NAME_STPEMB         :St. Petersburg MB -ajovaunu
+STR_NAME_STUTSDT8       :Stuttgart S-DT 8
+STR_NAME_SYDNBALDWIN    :Sydney Baldwin -höyryraitiovaunu
+STR_NAME_SYDNCCLASS     :Sydney C-luokka
+STR_NAME_SYDNLPCLASS    :Sydney L/P-luokka
+STR_NAME_SYDNRCLASS     :Sydney R-luokka
+STR_NAME_TASHKTM19      :Tashkent KTM-19
+STR_NAME_TOROALRV       :Toronto Transit ALRV
+STR_NAME_TOROBIGWITT    :Toronto Transit 'Big Witt'
+STR_NAME_TOROPCA7CLASS  :Toronto Transit PCC A-7-luokka
+STR_NAME_TOROTLRV       :Toronto Transit Flexity Outlook TLRV
+STR_NAME_TOSA100IIISERIES:Tosa 100-III -sarja
+STR_NAME_TOSA200IISERIES:Tosa 200-II -sarja
+STR_NAME_TUNITW6000     :Tunis TW6000
+STR_NAME_VIENTYPEL      :Vienna L-tyyppi
+STR_NAME_VIENULF        :Vienna ultramatalalattia
+STR_NAME_ZAGRTMK2200    :Zagreb CroTram TMK 2200
+STR_NAME_ZURIBE44       :Zürich Be 4-4 Swiss Standard Car
+STR_NAME_ZURICE44       :Zürich Ce 4/4 'Elefant'

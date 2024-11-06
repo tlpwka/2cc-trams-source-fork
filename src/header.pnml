@@ -1,0 +1,55 @@
+/*
+ * 2CC Tram Set
+ * Copyright (C) 2014-2015 2CC Tram Set Developers
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+// define the newgrf
+grf {
+	grfid:	    "\FB\FB\00\10";
+	name:	    string(STR_GRF_NAME);
+	desc:	    string(STR_GRF_DESCRIPTION);
+    url:        string(STR_GRF_URL);
+	version:	REPO_REVISION;
+	min_compatible_version:	5722;
+	
+	param {
+		 param_refit {
+			type:	int;
+			name:	string(STR_PARAM_REFIT_NAME);
+			desc:	string(STR_PARAM_REFIT_DESC);
+			min_value:	0;
+			max_value:	2;
+			def_value:	0;
+			names: {	0:	string(STR_PARAM_REFIT_PASS);
+						1:	string(STR_PARAM_REFIT_TOWN);
+						2:	string(STR_PARAM_REFIT_ALL); };
+		}
+    }
+    param {
+		 param_modellife {
+			type:	bool;
+			name:	string(STR_PARAM_MODELLIFE_NAME);
+			desc:	string(STR_PARAM_MODELLIFE_DESC);
+			def_value:	0;
+		}
+	}
+}
+
+basecost {
+	PR_BUILD_VEHICLE_ROAD: 2;
+	PR_RUNNING_ROADVEH: 1;
+}

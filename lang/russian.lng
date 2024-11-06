@@ -1,0 +1,42 @@
+##grflangid 0x07
+##plural 6
+##gender m f n p
+##case abl acc dat f gen m n nom p pre
+STR_GRF_NAME                    :2CC Трамвайный Набор {VERSION}
+STR_GRF_DESCRIPTION             :{BLACK}Лицензия: {SILVER}GPL v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME    :Смена типа груза
+STR_PARAM_REFIT_DESC    :Выбор возможного типа груза для каждого трамвая.  Можно выбрать между только пассажирами (по умолчанию), типы грузов которые обычно перевозят в городе (пассажиры, почта, экспресс грузы) или любой тип.
+STR_PARAM_REFIT_PASS    :Только пассажиры
+STR_PARAM_REFIT_TOWN    :Только городские типы груза
+STR_PARAM_REFIT_ALL             :Любой тип груза
+
+STR_NAME_AMST491        :Амстердамский 491-550 'Drieasser'
+STR_NAME_AMST8G         :Амстердам 8G
+STR_NAME_BERLMAXIMUM24  :Берлинский Maximum 24
+STR_NAME_BERLT24        :Берлинский T24
+STR_NAME_BLACBALLOON    :Трамвай Blackpool Balloon
+STR_NAME_CAGLSKODA06T   :Шкода Каглиари 06T
+STR_NAME_CHAN200SERIES  :Changchun 200 серия
+STR_NAME_CLUJPESA120NA  :Клужский PESA 120Na
+STR_NAME_DALIDL8000     :Dalian DL8000
+STR_NAME_GOTHMB01       :Гутенберг MB01
+STR_NAME_HAGUPCC1200    :The Hague PCC 1200
+STR_NAME_KRAKSN1        :Краковский Sanok SN1
+STR_NAME_MELBZ1CLASS    :Мельбурнский Z1 Класс
+STR_NAME_MILA1500       :Миланский ATM Класс 1500
+STR_NAME_MILA4700       :Миланский ATM 4700
+STR_NAME_NAGA1300SERIES :Нагасаки 1300 серия
+STR_NAME_PRAGSKODA15T   :Пражская Шкода 15T "Городской"
+STR_NAME_PYONTATRAT6B5  :Пхеньянский Татра T6B5
+STR_NAME_ROTT21         :Ротердамский 21-70 'Drieramers'
+STR_NAME_SAPPM100       :Сапоро M100
+STR_NAME_STUTSDT8       :Штутгард S-DT 8
+STR_NAME_SYDNBALDWIN    :Сиднейский Паро-Моторный Трамвай Baldwin
+STR_NAME_SYDNLPCLASS    :Сиднейский L/P класс
+STR_NAME_SYDNRCLASS     :Сиднейский R Класс
+STR_NAME_TOSA100IIISERIES:Tosa 100-III серия
+STR_NAME_TOSA200IISERIES:Tosa 200-II серия
+STR_NAME_ZAGRTMK2200    :Загребский Трамвай TMK 2200
+STR_NAME_ZURICE44       :Цюрихский Ce 4/4 'Слон'

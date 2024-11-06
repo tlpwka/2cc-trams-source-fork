@@ -1,0 +1,134 @@
+##grflangid 0x0d
+##plural 6
+##gender ženski srednji muški
+##case nom big aku vok dat lok ins gen
+STR_GRF_NAME                    :2CC set tramvaja {VERSION}
+STR_GRF_DESCRIPTION             :{BLACK}Licenca: {SILVER}GPL v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME    :Ponovo opremiti
+STR_PARAM_REFIT_DESC    :Odaberite dostupnu opremu za svaki tramvaj. Dostupni odabiri: samo za putnike (uobičajena postavka), gradski tipovi tereta (putnici, pošta i ekspresni tereti) ili svi tipovi tereta.
+STR_PARAM_REFIT_PASS    :Samo putnici
+STR_PARAM_REFIT_TOWN    :Samo gradski tipovi tereta
+STR_PARAM_REFIT_ALL             :Svi tipovi tereta
+STR_PARAM_MODELLIFE_NAME:Dugačak period dostupnosti vozila
+STR_PARAM_MODELLIFE_DESC:Uobičajeno : Isključeno . Svako vozilo (osim one koje su uvedene 2010 pa nadalje ) je dostupno za kupovinu 10 godina . Omogućite ovo ako želite da povećate životni vek vozila ( dostupnost kupovine ) u punom periodu u kojem je vozilo korišćeno u stvarnom životu. Imajte na umu da će ovo dati vrlo dugačak spisak kupovine.
+
+STR_NAME_ADELHCLASS     :Adelaide klasa H
+STR_NAME_ADELTYPEB      :Adelaide tip B Toast Rack
+STR_NAME_AMST491        :Amsterdam 491-550 "Drieasser"
+STR_NAME_AMST8G         :Amsterdam 8G
+STR_NAME_BERLMAXIMUM24  :Berlin maksimum 24
+STR_NAME_BERLT24        :Berlin T24
+STR_NAME_BERNMEKARSKI   :Bern Mékarski tramvaj na kompresovani vazduh
+STR_NAME_BLACBALLOON    :Blekpul Ballon tramvaj
+STR_NAME_BOSTTYPE7      :Boston MBTA tip 7 LRV
+STR_NAME_BRNOTATRAK2    :Brno Tatra K2
+STR_NAME_BRNOTATRAKT85D :Brno Tatra KT85D
+STR_NAME_BUDALORINCI    :Budimpešta Lőrinci tramvaj
+STR_NAME_CAGLSKODA06T   :Kaljari Škoda 06T
+STR_NAME_CHAN200SERIES  :Changchun 200 Series
+STR_NAME_CHRIROWANPATENT:Christchurch 'Rowan Patent' parni tramvaj
+STR_NAME_CLEVINTERURBANSTANDARD:Klivlend standardni drveni međugradski tramvaj
+STR_NAME_CLEVPETERWITT  :Cleveland 'Peter Vitt' sa centralnim ulazom
+STR_NAME_CLUJPESA120NA  :Kluž PESA 120Na
+STR_NAME_CUIACAFURBOS3  :Kuiaba CAF Urbos 3
+STR_NAME_DALIDL8000     :Dalijan DL8000
+STR_NAME_DRESTATRAT4D   :Drezden Tatra T4D
+STR_NAME_DRESTATRAT6A2  :Drezden Tatra T6A2
+STR_NAME_DUBRTRAM       :Dubrovnik tramvaj
+STR_NAME_FRANPTW        :Frankfurt P-Tw
+STR_NAME_GOTHMB01       :Geteborg MB01
+STR_NAME_HAGUPCC1200    :Hag PCC 1200
+STR_NAME_HELS203        :Helsinki 203-218
+STR_NAME_HONGDOUBLEDECK :Hong Kong tramvaj na kat
+STR_NAME_HOUSS70        :Hjuston METRORail S70
+STR_NAME_INDICOACHPARLOR:Indianapolis ACF brzi međugradski vagon-salon
+STR_NAME_ISTAALSTOMX04  :Istanbul Alstom Citadis X-04
+STR_NAME_KOLKTRAM       :Kolkata tramvaj
+STR_NAME_KRAKSN1        :Krakov Sanok SN1
+STR_NAME_LISBBRILL      :Lisabon Brill 203-282
+STR_NAME_LODZHERBRAND   :Lodz Herbrand tramvaj
+STR_NAME_LONDCR4000     :London Tramlink CR4000 Flexity Swift
+STR_NAME_LONDJOHNGRANTHAMS:London John Grantham's parni tramvaj
+STR_NAME_LOSAAMERITRAM300:Los Anđeles AmeriTram 300
+STR_NAME_LVIVT5L64      :Lviv Elektron T5L64
+STR_NAME_LVIVTATRAKT4   :Lviv Tatra KT4
+STR_NAME_MANCT68        :Mančester T-68
+STR_NAME_MANCWILKINSONPATENT:Mančester Motor "Wilkinson Patent"
+STR_NAME_MANITATRART8D5 :Manila Tatra RT8D5
+STR_NAME_MANX4          :Manks električni tramvaj 4-9
+STR_NAME_MELBABCLASS    :Melburn klasa A-B "kalifornijska kombinacija"
+STR_NAME_MELBACLASS     :Melburn klasa A
+STR_NAME_MELBBCLASS     :Melburn klasa B
+STR_NAME_MELBD1CLASS    :Melburn klasa D1 Combino
+STR_NAME_MELBWCLASS     :Melburn klasa W
+STR_NAME_MELBZ1CLASS    :Melburn klasa Z1
+STR_NAME_MILA1500       :Milano ATM klasa 1500
+STR_NAME_MILA4700       :Milano ATM 4700
+STR_NAME_MILA7100       :Milano ATM 7100 Sirio
+STR_NAME_MOSCKM         :Moskva KM tramvaj
+STR_NAME_MOSCKTM5       :Moskva KTM-5
+STR_NAME_MOSCMTV82A     :Moskva MTV-82A
+STR_NAME_MOSCOERLIKON   :Moskva Oerlikon tramvaj
+STR_NAME_MOSCR1         :Moskva R1
+STR_NAME_NAGA1300SERIES :Nagasaki serija 1300
+STR_NAME_NAGA5000SERIES :Nagasaki serija 5000
+STR_NAME_NANTINCENTRO   :Nant Incentro
+STR_NAME_NANTMEKARSKI   :Nant Mékarski tramvaj na kompresovani vazduh
+STR_NAME_NANTESTFS1     :Nant TFS-1
+STR_NAME_NEWOLAMM       :Nju Orlins Lamm parni bezvatreni motor
+STR_NAME_OSLOSL79       :Oslo SL79
+STR_NAME_OSLOSM53       :Oslo SM53
+STR_NAME_OSLOTYPES      :Oslo tip S
+STR_NAME_OSTRVARIOLF    :Ostrava Vario LF
+STR_NAME_PARILAMMFRANCQ :Pariz Lam i Frank parni bezvatreni motor
+STR_NAME_PARIPURREY     :Pariz Purrey parni tramvaj na kat
+STR_NAME_PAVLKTM8       :Pavlodar KTM-8
+STR_NAME_PHILKCAR       :Filadelfija KHI K-kola
+STR_NAME_PORTPSIUNITED100:Portland PSI United Streetcar 100
+STR_NAME_PORTTYPE2      :Portland MAX tip 2 SD600A
+STR_NAME_PRAGSKODA15T   :Prag Škoda 15T ForCity
+STR_NAME_PRAGTATRAT2    :Prag Tatra T2
+STR_NAME_PYONTATRAT6B5  :Pjongjang Tatra T6B5
+STR_NAME_RICHSPRAGUE    :Richmond Sprague električni motorni tramvaj
+STR_NAME_ROTT21         :Roterdam 21-70 'Drieramers'
+STR_NAME_SANFLRV2       :San Francisko MUNI LRV2
+STR_NAME_SANFS200       :San Francisko MUNI S200
+STR_NAME_SANFUSSLRV     :San Francisko MUNI USSLRV
+STR_NAME_SAPPM100       :Saporo M100
+STR_NAME_SARATATRAT3YU  :Sarajevo Tatra T3YU
+STR_NAME_STPEKRAUSS     :Sankt Petersburg Kraus parni tramvaj
+STR_NAME_STPELM2008     :Sankt-Peterburg LM-2008
+STR_NAME_STPELM33       :Sankt-Peterburg LM-33 "Amerikanac"
+STR_NAME_STPELM49       :Sankt-Peterburg LM-49 "Elephant"
+STR_NAME_STPELM57       :Sankt-Peterburg LM-57 'Dandy'
+STR_NAME_STPELM68       :Sankt-Peterburg LM-68 'Aquarium'
+STR_NAME_STPEMB         :Sankt Peterburg MB električni tramvaj
+STR_NAME_STRASEUROTRAM  :Strazbur Eurotram
+STR_NAME_STUTSDT8       :Štutgart S-DT 8
+STR_NAME_SYDNBALDWIN    :Sidni Baldvin parni tramvaj
+STR_NAME_SYDNCCLASS     :Sidni C klasa tramvaj sa jednim salonom
+STR_NAME_SYDNLPCLASS    :Sidni klasa L-P
+STR_NAME_SYDNRCLASS     :Sidni R klasa
+STR_NAME_SYDNVARIOTRAM  :Sidni Variotram
+STR_NAME_TACOSKODA10T   :Takoma Škoda 10T
+STR_NAME_TASHKTM19      :Tashkent KTM-19
+STR_NAME_TOROALRV       :Toronto tranzit ALRV
+STR_NAME_TOROBIGWITT    :Toronto tranzit "Big Witt"
+STR_NAME_TOROCLRV       :Toronto Tranzit CLRV
+STR_NAME_TOROPCA7CLASS  :Toronto tranzit klasa PCC A-7
+STR_NAME_TOROPCCA1CLASS :Toronto Tranzit klasa PCC A-1
+STR_NAME_TOROTLRV       :Toronto Transit Flexity Outlook TLRV
+STR_NAME_TOSA100IIISERIES:Tosa serija 100-III
+STR_NAME_TOSA200IISERIES:Tosa serija 200-II
+STR_NAME_TRIESERIE429   :Trst serija 429-448
+STR_NAME_TUNITW6000     :Tunis TW6000
+STR_NAME_VIENTW1        :Beč SB Tw 1-15
+STR_NAME_VIENTW2        :Beč SB Tw 20-29
+STR_NAME_VIENTYPEB      :Beč tip B
+STR_NAME_VIENTYPEL      :Beč tip L
+STR_NAME_VIENULF        :Beč tramvaj sa ultra niskim podom
+STR_NAME_ZAGRTMK2200    :Zagreb tramvaj TMK 2200
+STR_NAME_ZURIBE44       :Cirih Be 4-4 švajcarski standardni tramvaj
+STR_NAME_ZURICE44       :Cirih Ce 4-4 'Elefant'

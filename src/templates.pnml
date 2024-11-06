@@ -1,0 +1,109 @@
+template template_roadvehicle_8(x, y) {
+    //[left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y,  8, 24,  -4,  -9]
+    [x+9  , y, 22, 20, -14, -11]
+    [x+32 , y, 32, 16, -18, -11]
+    [x+65 , y, 22, 20, -10, -11]
+    [x+88 , y,  8, 24,  -4, -17]
+    [x+97 , y, 22, 20, -12, -11]
+    [x+120, y, 32, 16, -14, -11]
+    [x+153, y, 22, 20,  -8, -11]
+}
+
+template template_roadvehicle_7(x, y) {
+    //[left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y,  8, 24,  -4,  -9]
+    [x+9  , y, 22, 20, -14, -11]
+    [x+32 , y, 32, 16, -18, -11]
+    [x+65 , y, 22, 20, -10, -11]
+    [x+88 , y,  8, 24,  -4, -17]
+    [x+97 , y, 22, 20, -12, -11]
+    [x+120, y, 32, 16, -14, -11]
+    [x+153, y, 22, 20,  -8, -11]
+}
+
+template template_roadvehicle_6(x, y) {
+    //[left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y,  8, 24,  -4,  -9]
+    [x+9  , y, 22, 20, -14, -11]
+    [x+32 , y, 32, 16, -18, -11]
+    [x+65 , y, 22, 20, -10, -11]
+    [x+88 , y,  8, 24,  -4, -17]
+    [x+97 , y, 22, 20, -12, -11]
+    [x+120, y, 32, 16, -14, -11]
+    [x+153, y, 22, 20,  -8, -11]
+}
+
+template template_roadvehicle_5(x, y) {
+    //[left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y,  8, 24,  -4,  -9]
+    [x+9  , y, 22, 20, -14, -11]
+    [x+32 , y, 32, 16, -18, -11]
+    [x+65 , y, 22, 20, -10, -11]
+    [x+88 , y,  8, 24,  -4, -17]
+    [x+97 , y, 22, 20, -12, -11]
+    [x+120, y, 32, 16, -14, -11]
+    [x+153, y, 22, 20,  -8, -11]
+}
+
+template template_roadvehicle_4(x, y) {
+    //[left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y,  8, 24,  -4,  -9]
+    [x+9  , y, 22, 20, -14, -11]
+    [x+32 , y, 32, 16, -18, -11]
+    [x+65 , y, 22, 20, -10, -11]
+    [x+88 , y,  8, 24,  -4, -17]
+    [x+97 , y, 22, 20, -12, -11]
+    [x+120, y, 32, 16, -14, -11]
+    [x+153, y, 22, 20,  -8, -11]
+}
+
+template template_roadvehicle_3(x, y) {
+    //[left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y,  8, 24,  -4,  -9]
+    [x+9  , y, 22, 20, -14, -11]
+    [x+32 , y, 32, 16, -18, -11]
+    [x+65 , y, 22, 20, -10, -11]
+    [x+88 , y,  8, 24,  -4, -17]
+    [x+97 , y, 22, 20, -12, -11]
+    [x+120, y, 32, 16, -14, -11]
+    [x+153, y, 22, 20,  -8, -11]
+}
+
+template template_roadvehicle_2(x, y) {
+    //[left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y,  8, 24,  -4,  -9]
+    [x+9  , y, 22, 20, -14, -11]
+    [x+32 , y, 32, 16, -18, -11]
+    [x+65 , y, 22, 20, -10, -11]
+    [x+88 , y,  8, 24,  -4, -17]
+    [x+97 , y, 22, 20, -12, -11]
+    [x+120, y, 32, 16, -14, -11]
+    [x+153, y, 22, 20,  -8, -11]
+}
+
+template template_roadvehicle_1(x, y) {
+    //[left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y,  8, 24,  -4,  -9]
+    [x+9  , y, 22, 20, -14, -11]
+    [x+32 , y, 32, 16, -18, -11]
+    [x+65 , y, 22, 20, -10, -11]
+    [x+88 , y,  8, 24,  -4, -17]
+    [x+97 , y, 22, 20, -12, -11]
+    [x+120, y, 32, 16, -14, -11]
+    [x+153, y, 22, 20,  -8, -11]
+}
+
+template template_roadvehicle_purchase(x, y) {
+    //[left_x,  upper_y,    width,     height,     offset_x,     offset_y]
+    [x,         y,          78,        12,          -25,          -6]
+}
+
+template template_roadvehicle_gui() {
+    //[offset_x,   offset_y]
+    [-16,          -6]
+}
+
+spriteset(spriteset_blank, "gfx/blank.png") {
+	[0,0,NOCROP]
+}

@@ -1,0 +1,127 @@
+##grflangid 0x02
+##plural 0
+##gender m w n p
+STR_GRF_NAME                    :2CC Tram Set {VERSION}
+STR_GRF_DESCRIPTION             :{BLACK}Lizenz: {SILVER}GPL v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME    :Umrüstung
+STR_PARAM_REFIT_DESC    :Wähle die Umrüstmöglichkeiten für jede Tram aus. Wähle zwischen "nur Passagiere" (Standard), "städtische Frachtarten" (Passagiere, Post, Expressfracht) oder "alle Frachtarten".
+STR_PARAM_REFIT_PASS    :nur Passagiere
+STR_PARAM_REFIT_TOWN    :nur städtische Frachtarten
+STR_PARAM_REFIT_ALL             :Alle Frachtarten
+STR_PARAM_MODELLIFE_NAME:Lange Fahrzeugverfügbarkeit
+STR_PARAM_MODELLIFE_DESC:Standardmäßig aus. Jedes Fahrzeug – außer denen, die ab 2010 eingeführt werden – ist für 10 Jahre verfügbar. Schalte diese Einstellung ein, um die Verfügbarkeit auf die Zeit, in der die Fahrzeuge tatsächlich eingesetzt wurden, auszudehnen. Beachte, dass die Fahrzeugliste dadurch sehr lang wird.
+
+STR_NAME_ADELHCLASS     :Adelaide H-Klasse
+STR_NAME_ADELTYPEB      :Adelaide Typ B Toast Rack
+STR_NAME_AMST491        :Amsterdam 491-550 'Dreiachser'
+STR_NAME_AMST8G         :Amsterdam 8G
+STR_NAME_BERLMAXIMUM24  :Berlin Maximum 24
+STR_NAME_BERLT24        :Berlin T24
+STR_NAME_BERNMEKARSKI   :Bern Mékarski druckluftgetriebene Tram
+STR_NAME_BLACBALLOON    :Blackpool Balloon Tram
+STR_NAME_BOSTTYPE7      :Boston MBTA Typ 7 LRV
+STR_NAME_BRNOTATRAK2    :Brno Tatra K2
+STR_NAME_BRNOTATRAKT85D :Brno Tatra KT85D
+STR_NAME_BUDALORINCI    :Budapest Lőrinci Tramwagen
+STR_NAME_CAGLSKODA06T   :Cagliari Škoda 06T
+STR_NAME_CHAN200SERIES  :Changchun 200-er Serie
+STR_NAME_CHRIROWANPATENT:Christchurch Rowan-Patent-Dampfwagen
+STR_NAME_CLEVPETERWITT  :Cleveland 'Peter Witt' Mitteleinstiegswagen
+STR_NAME_CLUJPESA120NA  :Cluj PESA 120Na
+STR_NAME_CUIACAFURBOS3  :Cuiaba CAF Urbos 3
+STR_NAME_DALIDL8000     :Dalian DL8000
+STR_NAME_DRESTATRAT4D   :Dresden Tatra T4D
+STR_NAME_DRESTATRAT6A2  :Dresden Tatra T6A2
+STR_NAME_DUBRTRAM       :Dubrownik Tram
+STR_NAME_FRANPTW        :Frankfurt P-Tw
+STR_NAME_GOTHMB01       :Göteborg MB01
+STR_NAME_HAGUPCC1200    :Den Haag PCC 1200
+STR_NAME_HELS203        :Helsinki 203-218
+STR_NAME_HONGDOUBLEDECK :Hong Kong Doppeldeck-Tram
+STR_NAME_HOUSS70        :Houston METRORail S70
+STR_NAME_ISTAALSTOMX04  :Istanbul Alstom Citadis X-04
+STR_NAME_KOLKTRAM       :Kolkata Tram
+STR_NAME_KRAKSN1        :Krakau Sanok SN1
+STR_NAME_LISBBRILL      :Lissabon Brill 203-282
+STR_NAME_LODZHERBRAND   :Łódź Herbrand-Wagen
+STR_NAME_LONDCR4000     :London Tramlink CR4000 Flexity Swift
+STR_NAME_LONDJOHNGRANTHAMS:London John Granthams Dampfwagen
+STR_NAME_LOSAAMERITRAM300:Los Angeles AmeriTram 300
+STR_NAME_LVIVT5L64      :Lwiw Elektron T5L64
+STR_NAME_LVIVTATRAKT4   :Lwiw Tatra KT4
+STR_NAME_MANCT68        :Manchester T-68
+STR_NAME_MANCWILKINSONPATENT:Manchester Wilkinson-Patent-Wagen
+STR_NAME_MANITATRART8D5 :Manila Tatra RT8D5
+STR_NAME_MANX4          :Manx Elektrowagen 4-9
+STR_NAME_MELBABCLASS    :Melbourne A-B-Klasse 'California Combination'
+STR_NAME_MELBACLASS     :Melbourne A-Klasse
+STR_NAME_MELBBCLASS     :Melbourne B-Klasse
+STR_NAME_MELBD1CLASS    :Melbourne D1-Klasse Combino
+STR_NAME_MELBWCLASS     :Melbourne W-Klasse
+STR_NAME_MELBZ1CLASS    :Melbourne Z1-Klasse
+STR_NAME_MILA1500       :Mailand ATM Class 1500
+STR_NAME_MILA4700       :Mailand ATM 4700
+STR_NAME_MILA7100       :Mailand ATM 7100 Sirio
+STR_NAME_MOSCKM         :Moskau KM-Tramwagen
+STR_NAME_MOSCKTM5       :Moskau KTM-5
+STR_NAME_MOSCMTV82A     :Moskau MTV-82A
+STR_NAME_MOSCOERLIKON   :Moskau Oerlikon-Tramwagen
+STR_NAME_MOSCR1         :Moskau R1
+STR_NAME_NAGA1300SERIES :Nagasaki 1300-er Serie
+STR_NAME_NAGA5000SERIES :Nagasaki 5000-er Serie
+STR_NAME_NANTINCENTRO   :Nantes Incentro
+STR_NAME_NANTMEKARSKI   :Nantes Mékarski druckluftgetriebene Tram
+STR_NAME_NANTESTFS1     :Nantes TFS-1
+STR_NAME_OSLOSL79       :Oslo SL79
+STR_NAME_OSLOSM53       :Oslo SM53
+STR_NAME_OSLOTYPES      :Oslo Typ S
+STR_NAME_OSTRVARIOLF    :Ostrava Vario LF
+STR_NAME_PARIPURREY     :Paris Purrey Dampf-Doppeldeck-Tram
+STR_NAME_PAVLKTM8       :Pawlodar KTM-8
+STR_NAME_PHILKCAR       :Philadelphia KHI K-Car
+STR_NAME_PORTPSIUNITED100:Portland PSI-United Streetcar 100
+STR_NAME_PORTTYPE2      :Portland MAX Typ 2 SD600A
+STR_NAME_PRAGSKODA15T   :Prag Škoda 15T ForCity
+STR_NAME_PRAGTATRAT2    :Prag Tatra T2
+STR_NAME_PYONTATRAT6B5  :Pjöngjang Tatra T6B5
+STR_NAME_ROTT21         :Rotterdam 21-70 'Dreirahmer'
+STR_NAME_SANFLRV2       :San Francisco MUNI LRV2
+STR_NAME_SANFS200       :San Francisco MUNI S200
+STR_NAME_SANFUSSLRV     :San Francisco MUNI USSLRV
+STR_NAME_SAPPM100       :Sapporo M100
+STR_NAME_SARATATRAT3YU  :Sarajewo Tatra T3YU
+STR_NAME_STPEKRAUSS     :St. Petersburg Krauss-Dampf-Tram
+STR_NAME_STPELM2008     :St. Petersburg LM-2008
+STR_NAME_STPELM33       :St. Petersburg LM-33 Amerikaner
+STR_NAME_STPELM49       :St. Petersburg LM-49 Elefant
+STR_NAME_STPELM57       :St. Petersburg LM-57 Dandy
+STR_NAME_STPELM68       :St. Petersburg LM-68 Aquarium
+STR_NAME_STPEMB         :St. Petersburg MB Triebwagen
+STR_NAME_STRASEUROTRAM  :Straßburg Eurotram
+STR_NAME_STUTSDT8       :Stuttgart S-DT 8
+STR_NAME_SYDNBALDWIN    :Sydney Baldwin Dampf-Tram
+STR_NAME_SYDNLPCLASS    :Sydney L/P-Klasse
+STR_NAME_SYDNRCLASS     :Sydney R-Klasse
+STR_NAME_SYDNVARIOTRAM  :Sydney Variotram
+STR_NAME_TACOSKODA10T   :Tacoma Škoda 10T
+STR_NAME_TASHKTM19      :Taschkent KTM-19
+STR_NAME_TOROALRV       :Toronto Transit ALRV
+STR_NAME_TOROBIGWITT    :Toronto Transit 'Big Witt'
+STR_NAME_TOROCLRV       :Toronto Transit CLRV
+STR_NAME_TOROPCA7CLASS  :Toronto Transit PCC A-7-Klasse
+STR_NAME_TOROPCCA1CLASS :Toronto Transit PCC A-1-Klasse
+STR_NAME_TOROTLRV       :Toronto Transit Flexity Outlook TLRV
+STR_NAME_TOSA100IIISERIES:Tosa 100-III Serie
+STR_NAME_TOSA200IISERIES:Tosa 200-II Serie
+STR_NAME_TRIESERIE429   :Trieste Serie 429-448
+STR_NAME_TUNITW6000     :Tunis TW6000
+STR_NAME_VIENTW1        :Wien SB Tw 1-15
+STR_NAME_VIENTW2        :Wien SB Tw 20-29
+STR_NAME_VIENTYPEB      :Wien Typ B
+STR_NAME_VIENTYPEL      :Wien Typ L
+STR_NAME_VIENULF        :Wien Niederflur-Tram
+STR_NAME_ZAGRTMK2200    :Zagreb CroTram TMK 2200
+STR_NAME_ZURIBE44       :Zürich Be 4-4 Schweizer Standardwagen
+STR_NAME_ZURICE44       :Zürich Ce 4/4 'Elefant'

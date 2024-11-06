@@ -1,0 +1,133 @@
+##grflangid 0x3a
+##plural 11
+##gender m f
+STR_GRF_NAME                    :2CC 트램셋 {VERSION}
+STR_GRF_DESCRIPTION             :{BLACK}라이선스: {SILVER}GPL v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME    :개조
+STR_PARAM_REFIT_DESC    :각 전차가 실을 수 있는 화물 종류를 선택하세요. 승객만(기본값), 도시에서 사용하는 화물만(승객, 우편, 특급 화물류 등) 또는 모든 화물 종류 중에서 선택할 수 있습니다.
+STR_PARAM_REFIT_PASS    :승객만
+STR_PARAM_REFIT_TOWN    :도시에서 사용하는 화물만
+STR_PARAM_REFIT_ALL             :모든 화물 종류
+STR_PARAM_MODELLIFE_NAME:모델 수명을 길게
+STR_PARAM_MODELLIFE_DESC:기본값: 꺼짐. 각 차량(2010년 이후에 도입된 차량은 제외)은 10년간 사용할 수 있습니다. 각 차량의 모델 수명을 실제 현실에서 각 차량이 활동하던 전체 기간으로 증가시키려면 이 설정을 켜십시오. 구매 목록 상에 각 차량이 매우 오래 나타날 것임을 염두에 두십시오.
+
+STR_NAME_ADELHCLASS     :애들레이드 H계
+STR_NAME_ADELTYPEB      :애들레이드 B계 Toast Rack
+STR_NAME_AMST491        :암스테르담 491-550 'Drieasser'
+STR_NAME_AMST8G         :암스테르담 8G
+STR_NAME_BERLMAXIMUM24  :베를린 Maximum 24
+STR_NAME_BERLT24        :Berlin T24
+STR_NAME_BERNMEKARSKI   :베른 메카스키 압축 공기 전차
+STR_NAME_BLACBALLOON    :블랙풀 풍선 전차
+STR_NAME_BOSTTYPE7      :보스턴 MBTA 7형 LRV
+STR_NAME_BRNOTATRAK2    :브르노 타트라 K2
+STR_NAME_BRNOTATRAKT85D :브르노 타트라 KT85D
+STR_NAME_BUDALORINCI    :부다페스트 Lőrinci 트램카
+STR_NAME_CAGLSKODA06T   :칼리아리 스코다 06T
+STR_NAME_CHAN200SERIES  :창춘 200 시리즈 전차
+STR_NAME_CHRIROWANPATENT:크라이스트처치 '로완 특허' 증기 엔진
+STR_NAME_CLEVINTERURBANSTANDARD:클리블랜드 도시간 표준 나무 객차
+STR_NAME_CLEVPETERWITT  :클리블랜드 '피터 위트' 중앙 입구형
+STR_NAME_CLUJPESA120NA  :클루즈 PESA 120Na
+STR_NAME_CUIACAFURBOS3  :쿠이아바 CAF 어보스 3
+STR_NAME_DALIDL8000     :다롄 DL8000
+STR_NAME_DRESTATRAT4D   :드레스덴 타트라 T4D
+STR_NAME_DRESTATRAT6A2  :드레스덴 타트라 T6A2
+STR_NAME_DUBRTRAM       :두브로브니크 전차
+STR_NAME_FRANPTW        :프랑크푸르트 P-Tw
+STR_NAME_GOTHMB01       :Gothenburg MB01계 전차
+STR_NAME_HAGUPCC1200    :헤이그 PCC 1200
+STR_NAME_HELS203        :헬싱키 203-218
+STR_NAME_HONGDOUBLEDECK :홍콩 2층 전차
+STR_NAME_HOUSS70        :휴스턴 메트로레일 S70
+STR_NAME_INDICOACHPARLOR:인디애나폴리스 ACF 코치-팔러 도시간 고속
+STR_NAME_ISTAALSTOMX04  :이스탄불 알스톰 시타디스 X-04
+STR_NAME_KOLKTRAM       :콜카타 전차
+STR_NAME_KRAKSN1        :Krakow Sanok SN1계 전차
+STR_NAME_LISBBRILL      :리스본 브릴 203-282
+STR_NAME_LODZHERBRAND   :우쯔 헤브란트 차
+STR_NAME_LONDCR4000     :런던 트램링크 CR4000 플랙시티 스위프트
+STR_NAME_LONDJOHNGRANTHAMS:런던 존 그랜담 증기 차
+STR_NAME_LOSAAMERITRAM300:로스앤젤레스 아메리트램 300
+STR_NAME_LVIVT5L64      :리비브 엘렉트론 T5L64
+STR_NAME_LVIVTATRAKT4   :리비브 타트라 KT4
+STR_NAME_MANCT68        :맨체스터 T-68
+STR_NAME_MANCWILKINSONPATENT:맨체스터 '윌킨슨 특허' 엔진
+STR_NAME_MANITATRART8D5 :마닐라 타트라 RT8D5
+STR_NAME_MANX4          :맨 섬 전기차 4-9
+STR_NAME_MELBABCLASS    :멜버른 A-B계 '캘리포니아 컴비네이션'
+STR_NAME_MELBACLASS     :멜버른 A계
+STR_NAME_MELBBCLASS     :멜버른 B계
+STR_NAME_MELBD1CLASS    :멜버른 D1계 Combino
+STR_NAME_MELBWCLASS     :멜버른 W계
+STR_NAME_MELBZ1CLASS    :멜버른 Z1계 전차
+STR_NAME_MILA1500       :밀라노 ATM 1500계
+STR_NAME_MILA4700       :밀라노 ATM 4700
+STR_NAME_MILA7100       :밀라노 ATM 7100 시리우스
+STR_NAME_MOSCKM         :모스크바 KM 트램카
+STR_NAME_MOSCKTM5       :모스크바 KTM-5
+STR_NAME_MOSCMTV82A     :모스크바 MTV-82A
+STR_NAME_MOSCOERLIKON   :모스크바 올리콘 트램카
+STR_NAME_MOSCR1         :모스크바 R1
+STR_NAME_NAGA1300SERIES :나가사키 1300계
+STR_NAME_NAGA5000SERIES :나가사키 5000계
+STR_NAME_NANTINCENTRO   :낭트 인센트로
+STR_NAME_NANTMEKARSKI   :낭트 메카스키 압축 공기 전차
+STR_NAME_NANTESTFS1     :낭트 TFS-1
+STR_NAME_NEWOLAMM       :뉴 올리언스 Lamm 파이어리스 증기 엔진
+STR_NAME_OSLOSL79       :오슬로 SL79
+STR_NAME_OSLOSM53       :오슬로 SM53
+STR_NAME_OSLOTYPES      :오슬로 S형
+STR_NAME_OSTRVARIOLF    :오스트라바 Vario LF
+STR_NAME_PARILAMMFRANCQ :파리 Lamm & Francq 파이어리스 증기 엔진
+STR_NAME_PARIPURREY     :파리 Purrey 2층 증기 전차
+STR_NAME_PAVLKTM8       :파블로다르 KTM-8
+STR_NAME_PHILKCAR       :필라델피아 KHI K카
+STR_NAME_PORTPSIUNITED100:포틀랜드 PSI 유나이티드 스트리트카 100
+STR_NAME_PORTTYPE2      :포틀랜드 MAX 2형 SD600A
+STR_NAME_PRAGSKODA15T   :프라하 Škoda 15T ForCity
+STR_NAME_PRAGTATRAT2    :프라하 타트라 T2
+STR_NAME_PYONTATRAT6B5  :평양 타트라 T6B5
+STR_NAME_RICHSPRAGUE    :리치몬드 스프래그 전기 모터 전차
+STR_NAME_ROTT21         :로터담 21-70 'Drieramers'
+STR_NAME_SANFLRV2       :샌프란시스코 MUNI LRV2
+STR_NAME_SANFS200       :샌프란시스코 MUNI S200
+STR_NAME_SANFUSSLRV     :샌프란시스코 MUNI USSLRV
+STR_NAME_SAPPM100       :삿포로 M100계 전차
+STR_NAME_SARATATRAT3YU  :사라예보 타트라 T3YU
+STR_NAME_STPEKRAUSS     :상트 페테르부르크 크라우스 증기 전차
+STR_NAME_STPELM2008     :상트 페테르부르크 LM-2008
+STR_NAME_STPELM33       :상트 페테르부르크 LM-33 '아메리칸'
+STR_NAME_STPELM49       :상트 페테르부르크 LM-49 '엘리펀트'
+STR_NAME_STPELM57       :상트 페테르부르크 LM-57 '댄디'
+STR_NAME_STPELM68       :상트 페테르부르크 LM-68 '아쿠아리움'
+STR_NAME_STPEMB         :상트 페테르부르크 MB 동력차
+STR_NAME_STRASEUROTRAM  :스트라스부르 유로트램
+STR_NAME_STUTSDT8       :슈투트가르트 S-DT 8
+STR_NAME_SYDNBALDWIN    :시드니 Baldwin 증기 모터 전차
+STR_NAME_SYDNCCLASS     :시드니 C계 단일 살롱 차량
+STR_NAME_SYDNLPCLASS    :시드니 L/P-계 전차
+STR_NAME_SYDNRCLASS     :시드니 R계 전차
+STR_NAME_SYDNVARIOTRAM  :시드니 Variotram
+STR_NAME_TACOSKODA10T   :타코마 스코다 10T
+STR_NAME_TASHKTM19      :타슈켄트 KTM-19
+STR_NAME_TOROALRV       :토론토 교통 ALRV
+STR_NAME_TOROBIGWITT    :토론토 교통 '빅 위트'
+STR_NAME_TOROCLRV       :토론토 교통 CLRV
+STR_NAME_TOROPCA7CLASS  :토론토 교통 PCC A-7계
+STR_NAME_TOROPCCA1CLASS :토론토 교통 PCC A-1계
+STR_NAME_TOROTLRV       :토론토 교통 플렉시티 아웃룩 TLRV
+STR_NAME_TOSA100IIISERIES:도사 100-3계
+STR_NAME_TOSA200IISERIES:도사 200-II계
+STR_NAME_TRIESERIE429   :트리에스테 시리즈 429-448
+STR_NAME_TUNITW6000     :Tunis TW6000
+STR_NAME_VIENTW1        :비엔나 SB Tw 1-15
+STR_NAME_VIENTW2        :비엔나 SB Tw 20-29
+STR_NAME_VIENTYPEB      :비엔나 B형
+STR_NAME_VIENTYPEL      :비엔나 L형
+STR_NAME_VIENULF        :비엔나 초저상
+STR_NAME_ZAGRTMK2200    :자그레브 크로트램 TMK 2200
+STR_NAME_ZURIBE44       :취리히 Be 4-4 스위스 표준 차량
+STR_NAME_ZURICE44       :취리히 Ce 4-4 '엘리펀트'

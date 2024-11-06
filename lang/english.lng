@@ -1,0 +1,131 @@
+##grflangid 0x01
+STR_GRF_NAME			:2CC Tram Set {VERSION}
+STR_GRF_DESCRIPTION		:{BLACK}License: {SILVER}GPL v2
+STR_GRF_URL				:http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME	:Refit
+STR_PARAM_REFIT_DESC	:Select the refits available for each tram. Choose between passengers only (default), cargo types that are used in towns (passenger, mail and express cargo classes) or all cargo types.
+STR_PARAM_REFIT_PASS	:Passengers only
+STR_PARAM_REFIT_TOWN	:Town cargo types only
+STR_PARAM_REFIT_ALL		:All cargo types
+STR_PARAM_MODELLIFE_NAME:Long model life
+STR_PARAM_MODELLIFE_DESC:Default: off. Each vehicle (except those introduced 2010 onwards) is available for purchase for 10 years. Enable this if you want to increase model life (purchase availability) to the full period that a vehicle was used in real life active service. Note that this will give a very long purchase list.
+
+STR_NAME_ADELHCLASS     :Adelaide H Class
+STR_NAME_ADELTYPEB      :Adelaide Type B Toast Rack
+STR_NAME_AMST491        :Amsterdam 491-550 'Drieasser'
+STR_NAME_AMST8G         :Amsterdam 8G
+STR_NAME_BERLMAXIMUM24  :Berlin Maximum 24
+STR_NAME_BERLT24        :Berlin T24
+STR_NAME_BERNMEKARSKI   :Bern Mékarski Compressed Air Tram
+STR_NAME_BLACBALLOON    :Blackpool Balloon Tram
+STR_NAME_BOSTTYPE7      :Boston MBTA Type 7 LRV
+STR_NAME_BRNOTATRAK2    :Brno Tatra K2
+STR_NAME_BRNOTATRAKT85D :Brno Tatra KT85D
+STR_NAME_BUDALORINCI    :Budapest Lőrinci Tramcar
+STR_NAME_CAGLSKODA06T   :Cagliari Škoda 06T
+STR_NAME_CHAN200SERIES  :Changchun 200 Series
+STR_NAME_CHRIROWANPATENT:Christchurch 'Rowan Patent' Steam Engine
+STR_NAME_CLEVINTERURBANSTANDARD:Cleveland Interurban Standard Wood Coach
+STR_NAME_CLEVPETERWITT  :Cleveland 'Peter Witt' Centre Entrance
+STR_NAME_CLUJPESA120NA  :Cluj PESA 120Na
+STR_NAME_CUIACAFURBOS3  :Cuiaba CAF Urbos 3
+STR_NAME_DALIDL8000     :Dalian DL8000
+STR_NAME_DRESTATRAT4D   :Dresden Tatra T4D
+STR_NAME_DRESTATRAT6A2  :Dresden Tatra T6A2
+STR_NAME_DUBRTRAM       :Dubrovnik Tram
+STR_NAME_FRANPTW        :Frankfurt P-Tw
+STR_NAME_GOTHMB01       :Gothenburg MB01
+STR_NAME_HAGUPCC1200    :Hague PCC 1200
+STR_NAME_HELS203        :Helsinki 203-218
+STR_NAME_HONGDOUBLEDECK :Hong Kong Double Deck Tram
+STR_NAME_HOUSS70        :Houston METRORail S70
+STR_NAME_INDICOACHPARLOR:Indianapolis ACF Coach-Parlor Highspeed Interurban
+STR_NAME_ISTAALSTOMX04  :Istanbul Alstom Citadis X-04
+STR_NAME_KOLKTRAM       :Kolkata Tram
+STR_NAME_KRAKSN1        :Krakow Sanok SN1
+STR_NAME_LISBBRILL      :Lisbon Brill 203-282
+STR_NAME_LODZHERBRAND   :Lodz Herbrand Car
+STR_NAME_LONDCR4000     :London Tramlink CR4000 Flexity Swift
+STR_NAME_LONDJOHNGRANTHAMS:London John Grantham's Steam Car
+STR_NAME_LOSAAMERITRAM300:Los Angeles AmeriTram 300
+STR_NAME_LVIVT5L64      :Lviv Elektron T5L64
+STR_NAME_LVIVTATRAKT4   :Lviv Tatra KT4
+STR_NAME_MANCT68        :Manchester T-68
+STR_NAME_MANCWILKINSONPATENT:Manchester 'Wilkinson Patent' Engine
+STR_NAME_MANITATRART8D5 :Manila Tatra RT8D5
+STR_NAME_MANX4          :Manx Electric Car 4-9
+STR_NAME_MELBABCLASS    :Melbourne A-B Class 'California Combination'
+STR_NAME_MELBACLASS     :Melbourne A Class
+STR_NAME_MELBBCLASS     :Melbourne B Class
+STR_NAME_MELBD1CLASS    :Melbourne D1 Class Combino
+STR_NAME_MELBWCLASS     :Melbourne W Class
+STR_NAME_MELBZ1CLASS    :Melbourne Z1 Class
+STR_NAME_MILA1500       :Milan ATM Class 1500
+STR_NAME_MILA4700       :Milan ATM 4700
+STR_NAME_MILA7100       :Milan ATM 7100 Sirio
+STR_NAME_MOSCKM         :Moscow KM Tramcar
+STR_NAME_MOSCKTM5       :Moscow KTM-5
+STR_NAME_MOSCMTV82A     :Moscow MTV-82A
+STR_NAME_MOSCOERLIKON   :Moscow Oerlikon Tramcar
+STR_NAME_MOSCR1         :Moscow R1
+STR_NAME_NAGA1300SERIES :Nagasaki 1300 Series
+STR_NAME_NAGA5000SERIES :Nagasaki 5000 Series
+STR_NAME_NANTINCENTRO   :Nantes Incentro
+STR_NAME_NANTMEKARSKI   :Nantes Mékarski Compressed Air Tram
+STR_NAME_NANTESTFS1     :Nantes TFS-1
+STR_NAME_NEWOLAMM       :New Orleans Lamm Fireless Steam Engine
+STR_NAME_OSLOSL79       :Oslo SL79
+STR_NAME_OSLOSM53       :Oslo SM53
+STR_NAME_OSLOTYPES      :Oslo Type S
+STR_NAME_OSTRVARIOLF    :Ostrava Vario LF
+STR_NAME_PARILAMMFRANCQ :Paris Lamm & Francq Fireless Steam Engine
+STR_NAME_PARIPURREY     :Paris Purrey Steam Tram Double Deck
+STR_NAME_PAVLKTM8       :Pavlodar KTM-8
+STR_NAME_PHILKCAR       :Philadelphia KHI K-Car
+STR_NAME_PORTPSIUNITED100:Portland PSI United Streetcar 100
+STR_NAME_PORTTYPE2      :Portland MAX Type 2 SD600A
+STR_NAME_PRAGSKODA15T   :Prague Škoda 15T ForCity
+STR_NAME_PRAGTATRAT2    :Prague Tatra T2
+STR_NAME_PYONTATRAT6B5  :Pyongyang Tatra T6B5
+STR_NAME_RICHSPRAGUE    :Richmond Sprague Electric Motor Streetcar
+STR_NAME_ROTT21         :Rotterdam 21-70 'Drieramers'
+STR_NAME_SANFLRV2       :San Francisco MUNI LRV2
+STR_NAME_SANFS200       :San Francisco MUNI S200
+STR_NAME_SANFUSSLRV     :San Francisco MUNI USSLRV
+STR_NAME_SAPPM100       :Sapporo M100
+STR_NAME_SARATATRAT3YU  :Sarajevo Tatra T3YU
+STR_NAME_STPEKRAUSS     :St. Petersburg Krauss Steam Tram
+STR_NAME_STPELM2008     :St. Petersburg LM-2008
+STR_NAME_STPELM33       :St. Petersburg LM-33 'American'
+STR_NAME_STPELM49       :St. Petersburg LM-49 'Elephant'
+STR_NAME_STPELM57       :St. Petersburg LM-57 'Dandy'
+STR_NAME_STPELM68       :St. Petersburg LM-68 'Aquarium'
+STR_NAME_STPEMB         :St. Petersburg MB Power Car
+STR_NAME_STRASEUROTRAM  :Strasbourg Eurotram
+STR_NAME_STUTSDT8       :Stuttgart S-DT 8
+STR_NAME_SYDNBALDWIN    :Sydney Baldwin Steam Motor Tram
+STR_NAME_SYDNCCLASS     :Sydney C Class Single Truck Saloon
+STR_NAME_SYDNLPCLASS    :Sydney L-P Class
+STR_NAME_SYDNRCLASS     :Sydney R Class
+STR_NAME_SYDNVARIOTRAM  :Sydney Variotram
+STR_NAME_TACOSKODA10T   :Tacoma Škoda 10T
+STR_NAME_TASHKTM19      :Tashkent KTM-19
+STR_NAME_TOROALRV       :Toronto Transit ALRV
+STR_NAME_TOROBIGWITT    :Toronto Transit 'Big Witt'
+STR_NAME_TOROCLRV       :Toronto Transit CLRV
+STR_NAME_TOROPCA7CLASS  :Toronto Transit PCC A-7 Class
+STR_NAME_TOROPCCA1CLASS :Toronto Transit PCC A-1 Class
+STR_NAME_TOROTLRV       :Toronto Transit Flexity Outlook TLRV
+STR_NAME_TOSA100IIISERIES:Tosa 100-III Series
+STR_NAME_TOSA200IISERIES:Tosa 200-II Series
+STR_NAME_TRIESERIE429   :Trieste Serie 429-448
+STR_NAME_TUNITW6000     :Tunis TW6000
+STR_NAME_VIENTW1        :Vienna SB Tw 1-15
+STR_NAME_VIENTW2        :Vienna SB Tw 20-29
+STR_NAME_VIENTYPEB      :Vienna Type B
+STR_NAME_VIENTYPEL      :Vienna Type L
+STR_NAME_VIENULF        :Vienna Ultra Low Floor
+STR_NAME_ZAGRTMK2200    :Zagreb CroTram TMK 2200
+STR_NAME_ZURIBE44       :Zürich Be 4-4 Swiss Standard Car
+STR_NAME_ZURICE44       :Zürich Ce 4-4 'Elefant'

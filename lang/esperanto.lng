@@ -1,0 +1,41 @@
+##grflangid 0x05
+##plural 0
+##case n
+STR_GRF_NAME                    :2CC Tramo Aro {VERSION}
+STR_GRF_DESCRIPTION             :{BLACK}Permesilo: {SILVER}GNUa Ĝenerala Publika Permesilo v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME    :Alĝustigu
+STR_PARAM_REFIT_DESC    :Elektu la alĝustigojn havebla por ĉiu tramo. Elektu inter nur pasaĝeroj (defaŭlto), kargo tipoj ke estas uzata en urboj (pasaĝeroj, poŝto kaj esprimas kargo aroj) aŭ ĉiuj tipoj de kargo.
+STR_PARAM_REFIT_PASS    :Nur pasaĝeroj
+STR_PARAM_REFIT_TOWN    :Nur kargo tipoj de urboj.
+STR_PARAM_REFIT_ALL             :Ĉiuj tipoj de kargo.
+
+STR_NAME_AMST491        :Amsterdamo 491-550 'Drieasser'
+STR_NAME_AMST8G         :Amsterdamo 8G
+STR_NAME_BERLMAXIMUM24  :Berlino Maximum 24
+STR_NAME_BERLT24        :Berlino T24
+STR_NAME_BLACBALLOON    :Blakpulo Balono Tramo
+STR_NAME_CAGLSKODA06T   :Škoda 06T de Cagliari
+STR_NAME_CHAN200SERIES  :Changchun 200 serio
+STR_NAME_CLUJPESA120NA  :Cluj PESA 120Na
+STR_NAME_DALIDL8000     :Dalian DL8000
+STR_NAME_GOTHMB01       :Gotemburgo MB01
+STR_NAME_HAGUPCC1200    :La Hague PCC 1200
+STR_NAME_KRAKSN1        :Krakovo Sanok SN1
+STR_NAME_MELBZ1CLASS    :Melburno 'Z1' Klaso
+STR_NAME_MILA1500       :Milano ATM Klaso 1500
+STR_NAME_MILA4700       :Milano ATM 4700
+STR_NAME_NAGA1300SERIES :Nagasako 1300 Serio
+STR_NAME_PRAGSKODA15T   :Prago Škoda 15T ForCity
+STR_NAME_PYONTATRAT6B5  :Pjongjango Tatra T6B5
+STR_NAME_ROTT21         :Roterdamo 21-70 'Drieramers'
+STR_NAME_SAPPM100       :Sapporo M100
+STR_NAME_STUTSDT8       :Stuttgart S-DT 8
+STR_NAME_SYDNBALDWIN    :Sidnejo Baldwin Vaporo Motoro Tramo
+STR_NAME_SYDNLPCLASS    :Sidnejo L/P-Klaso
+STR_NAME_SYDNRCLASS     :Sidnejo R Klaso
+STR_NAME_TOSA100IIISERIES:Tosa 100-III Serio
+STR_NAME_TOSA200IISERIES:Tosa 200-II Serio
+STR_NAME_ZAGRTMK2200    :Zagrebo CroTram TMK 2200
+STR_NAME_ZURICE44       :Zuriko Ce 4/4 'Elefanto'

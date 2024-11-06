@@ -1,0 +1,41 @@
+##grflangid 0x22
+##plural 0
+##gender Masculin Femenin
+STR_GRF_NAME                    :2CC Tram Set {VERSION} - Extensió 2CC de tramvies
+STR_GRF_DESCRIPTION             :{BLACK}Llicència: {SILVER}GPL v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_NAME    :Remodela
+STR_PARAM_REFIT_DESC    :Selecciona les remodelacions disponibles per a cada tramvia. Escolliu entre només passatgers (per defecte), càrregues usades per les poblacions (passatgers, correu i classes de càrrega exprés) o tots els tipus de càrrega.
+STR_PARAM_REFIT_PASS    :Només passatgers
+STR_PARAM_REFIT_TOWN    :Només càrrega relacionada amb les poblacions
+STR_PARAM_REFIT_ALL             :Tots els tipus de càrrega
+
+STR_NAME_AMST491        :Amsterdam 491-550 'Drieasser'
+STR_NAME_AMST8G         :Amsterdam 8G
+STR_NAME_BERLMAXIMUM24  :Berlin Maximum 24
+STR_NAME_BERLT24        :Berlin T24
+STR_NAME_BLACBALLOON    :Tramvia Blackpool Balloon
+STR_NAME_CAGLSKODA06T   :Cagliari Škoda 06T
+STR_NAME_CHAN200SERIES  :Changchun Sèries 200
+STR_NAME_CLUJPESA120NA  :Cluj PESA 120Na
+STR_NAME_DALIDL8000     :Dalian DL8000
+STR_NAME_GOTHMB01       :Gothenburg MB01
+STR_NAME_HAGUPCC1200    :The Hague PCC 1200
+STR_NAME_KRAKSN1        :Krakow Sanok SN1
+STR_NAME_MELBZ1CLASS    :Melbourne Classe Z1
+STR_NAME_MILA1500       :Milan Classe ATM 1500
+STR_NAME_MILA4700       :Milan ATM 4700
+STR_NAME_NAGA1300SERIES :Nagasaki Sèries 1300
+STR_NAME_PRAGSKODA15T   :Prague Škoda 15T ForCity
+STR_NAME_PYONTATRAT6B5  :Pyongyang Tatra T6B5
+STR_NAME_ROTT21         :Rotterdam 21-70 'Drieramers'
+STR_NAME_SAPPM100       :Sapporo M100
+STR_NAME_STUTSDT8       :Stuttgart S-DT 8
+STR_NAME_SYDNBALDWIN    :Tramvia Sydney Baldwin amb Motor a Vapor
+STR_NAME_SYDNLPCLASS    :Sydney Classe L/P
+STR_NAME_SYDNRCLASS     :Sydney Classe R
+STR_NAME_TOSA100IIISERIES:Tosa Sèries 100-III
+STR_NAME_TOSA200IISERIES:Tosa Sèries 200-II
+STR_NAME_ZAGRTMK2200    :Zagreb CroTram TMK 2200
+STR_NAME_ZURICE44       :Zürich Ce 4/4 'Elefant'

@@ -1,0 +1,14 @@
+##grflangid 0x0c
+##plural 1
+STR_GRF_NAME                    :2CC 路面電車套件 {VERSION}
+STR_GRF_DESCRIPTION             :{BLACK}許可協議：{SILVER}GPL v2
+STR_GRF_URL                             :http://dev.openttdcoop.org/projects/trams-2cc
+
+STR_PARAM_REFIT_ALL             :所有貨物種類
+
+STR_NAME_BERLT24        :柏林 T24
+STR_NAME_HAGUPCC1200    :海牙 PCC 1200
+STR_NAME_MILA4700       :米蘭 ATM 4700
+STR_NAME_PYONTATRAT6B5  :平壤 Tatra T6B5
+STR_NAME_SYDNLPCLASS    :悉尼 L / P 型
+STR_NAME_SYDNRCLASS     :悉尼「R」型

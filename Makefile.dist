@@ -1,0 +1,16 @@
+################################################################
+# Definitions needed for tar releases
+# This part is automatically generated
+################################################################
+REPO_REVISION := 7121
+NEWGRF_VERSION := 7121
+REPO_HASH := 06c0a662a25b
+REPO_VERSION_STRING := v7121 (06c0a662a25b)
+REPO_TITLE := 2CC Tram Set v7121 (06c0a662a25b)
+REPO_DATE := 
+REPO_BRANCH := 
+REPO_MODIFIED := 
+REPO_TAGS    := 
+HG := :
+GIT := :
+PYTHON := :
