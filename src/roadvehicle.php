@@ -72,7 +72,8 @@ spriteset(spriteset_ID_LIV_SEC, "FILE") {
 	}
 	$switch .= '}' . PHP_EOL;
 	$nml .= $switch;
-	
+$introductionDate = $vehicleinfo['property']['introduction_date_year'];
+$year = substr($introductionDate, 0, 4);	
 	$nml .= "
 switch (FEAT_ROADVEHS, SELF, switch_{$vehid}_{$livery}_graphics_gui, position_in_consist) {
 	0: spriteset_{$vehid}_{$livery}_gui; //first in consist
@@ -82,6 +83,12 @@ switch (FEAT_ROADVEHS, SELF, switch_{$vehid}_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_{$vehid}_{$livery}_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_{$vehid}_{$livery}_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_{$vehid}_speedyear, $year) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 ";
 
 	//if it is an articulated vehicle
@@ -174,6 +181,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_$vehid, $numvehid) {
 
     graphics {
         purchase:                       spriteset_{$vehid}_purchase;
+        speed:                          {$vehicleinfo['graphic']['speed']};
+        cost_factor:			{$vehicleinfo['graphic']['cost_factor']};
+        running_cost_factor:		{$vehicleinfo['graphic']['running_cost_factor']};
         //additional_text:              //return string(STR_DESC_);
         {$graphics_block_insert}
         switch_{$vehid}_graphics;

@@ -75,7 +75,7 @@ function nml_vehicleinfo_from_ini($ini, $vehid) {
 		return FALSE;
 	}
 	$vehicleinfo['property']['introduction_date'] = $ini['property']['introduction_year'].',01,01';
-	
+	$vehicleinfo['property']['introduction_date_year'] = $ini['property']['introduction_year'];
 	//vehicle life
 	if (!isset($ini['property']['vehicle_life']) || !is_numeric($ini['property']['vehicle_life']) || ($ini['property']['vehicle_life'] <= 0) || ($ini['property']['vehicle_life'] > 255)) {
 		$vehicleinfo['property']['vehicle_life'] = 28;
@@ -118,7 +118,7 @@ function nml_vehicleinfo_from_ini($ini, $vehid) {
 		echo 'Warning: Invalid [property] speed set for "'.$vehid.'" (limit 0-514 km/h)' . PHP_EOL;
 		return FALSE;
 	}
-	$vehicleinfo['property']['speed'] = $ini['property']['speed'].'*param_speedmod/100';
+	$vehicleinfo['property']['speed'] = $ini['property']['speed']; //.'*param_speedmod/100';
 	
 	//power
 	if (!isset($ini['property']['power']) || !is_numeric($ini['property']['power']) || ($ini['property']['power'] <= 0) || ($ini['property']['power'] > 2550)) {
@@ -175,6 +175,12 @@ function nml_vehicleinfo_from_ini($ini, $vehid) {
 		echo 'No such graphics file "'.$ini['default']['sprite_file'].'" for "'.$vehid.'"' . PHP_EOL;
 		return FALSE;
 	}
+//speed
+$nml = "*param_speedmod/100/8*switch_{$vehid}_speedyear()";
+$vehicleinfo['graphic']['speed'] = $vehicleinfo['property']['speed'].$nml;//.'*param_speedmod/100/(8/switch_speedyear())';//
+//cost
+$vehicleinfo['graphic']['cost_factor'] = $vehicleinfo['property']['cost_factor'].' * param_purchase_cost';
+$vehicleinfo['graphic']['running_cost_factor'] = $vehicleinfo['property']['running_cost_factor'].' * param_running_cost';
 	//determine vehicle parts
 	$graphicssections = array('gui', 'purchase');
 	for ($i = 1; $i <= $vehicleinfo['property']['vehicleparts']; $i++) {

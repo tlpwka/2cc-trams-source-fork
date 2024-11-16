@@ -57,9 +57,63 @@ param {
             def_value: 100;
             }
 	}
+param {
+        param_purchase_cost {
+            type:   int;
+            name:   string(STR_PARAM_PURCHASE_COST);
+            desc:   string(STR_PARAM_PURCHASE_COST_DESC);
+            min_value: 0;
+            max_value: 1;
+            def_value: 5;
+            names: {
+                        1: string(STR_PARAM_DIVIDE_16);
+                        2: string(STR_PARAM_DIVIDE_8);
+                        3: string(STR_PARAM_DIVIDE_4);
+                        4: string(STR_PARAM_DIVIDE_2);
+                        5: string(STR_PARAM_NORMAL);
+                        6: string(STR_PARAM_TIMES_2);
+                        7: string(STR_PARAM_TIMES_4);
+                        8: string(STR_PARAM_TIMES_8);
+                        9: string(STR_PARAM_TIMES_16);
+            };
+        }
+    }
+param {
+        param_running_cost {
+            type:   int;
+            name:   string(STR_PARAM_RUNNING_COST);
+            desc:   string(STR_PARAM_RUNNING_COST_DESC);
+            min_value: 1;
+            max_value: 10;
+            def_value: 7;
+            names: {
+                        1: string(STR_PARAM_DIVIDE_64);
+                        2: string(STR_PARAM_DIVIDE_32);
+                        3: string(STR_PARAM_DIVIDE_16);
+                        4: string(STR_PARAM_DIVIDE_8);
+                        5: string(STR_PARAM_DIVIDE_4);
+                        6: string(STR_PARAM_DIVIDE_2);                     
+                        7: string(STR_PARAM_NORMAL);
+                        8: string(STR_PARAM_TIMES_2);
+                        9: string(STR_PARAM_TIMES_4);
+                        10: string(STR_PARAM_TIMES_8);
+            };
+        }
+    }
 }
 
-basecost {
-	PR_BUILD_VEHICLE_ROAD: 2;
-	PR_RUNNING_ROADVEH: 1;
-}
+//	basecost {
+//		PR_BUILD_VEHICLE_ROAD: 2;
+//		PR_RUNNING_ROADVEH: 1;
+//	}
+//}
+
+
+/* SPEED */
+
+//    switch (FEAT_ROADVEHS, SELF, switch_speedyear, current_year) {
+//	    0..1994: return 5;                        // Until 1994, 
+//	    return 6;                                 // After 1994, 
+//    }
+
+

@@ -57,12 +57,66 @@ param {
             def_value: 100;
             }
 	}
+param {
+        param_purchase_cost {
+            type:   int;
+            name:   string(STR_PARAM_PURCHASE_COST);
+            desc:   string(STR_PARAM_PURCHASE_COST_DESC);
+            min_value: 0;
+            max_value: 1;
+            def_value: 5;
+            names: {
+                        1: string(STR_PARAM_DIVIDE_16);
+                        2: string(STR_PARAM_DIVIDE_8);
+                        3: string(STR_PARAM_DIVIDE_4);
+                        4: string(STR_PARAM_DIVIDE_2);
+                        5: string(STR_PARAM_NORMAL);
+                        6: string(STR_PARAM_TIMES_2);
+                        7: string(STR_PARAM_TIMES_4);
+                        8: string(STR_PARAM_TIMES_8);
+                        9: string(STR_PARAM_TIMES_16);
+            };
+        }
+    }
+param {
+        param_running_cost {
+            type:   int;
+            name:   string(STR_PARAM_RUNNING_COST);
+            desc:   string(STR_PARAM_RUNNING_COST_DESC);
+            min_value: 1;
+            max_value: 10;
+            def_value: 7;
+            names: {
+                        1: string(STR_PARAM_DIVIDE_64);
+                        2: string(STR_PARAM_DIVIDE_32);
+                        3: string(STR_PARAM_DIVIDE_16);
+                        4: string(STR_PARAM_DIVIDE_8);
+                        5: string(STR_PARAM_DIVIDE_4);
+                        6: string(STR_PARAM_DIVIDE_2);                     
+                        7: string(STR_PARAM_NORMAL);
+                        8: string(STR_PARAM_TIMES_2);
+                        9: string(STR_PARAM_TIMES_4);
+                        10: string(STR_PARAM_TIMES_8);
+            };
+        }
+    }
 }
 
-basecost {
-	PR_BUILD_VEHICLE_ROAD: 2;
-	PR_RUNNING_ROADVEH: 1;
-}
+//	basecost {
+//		PR_BUILD_VEHICLE_ROAD: 2;
+//		PR_RUNNING_ROADVEH: 1;
+//	}
+//}
+
+
+/* SPEED */
+
+//    switch (FEAT_ROADVEHS, SELF, switch_speedyear, current_year) {
+//	    0..1994: return 5;                        // Until 1994, 
+//	    return 6;                                 // After 1994, 
+//    }
+
+
 template template_roadvehicle_8(x, y) {
     //[left_x, upper_y, width, height, offset_x, offset_y]
     [x    , y,  8, 24,  -4,  -9]
@@ -204,6 +258,12 @@ switch (FEAT_ROADVEHS, SELF, switch_AdelHClass_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_AdelHClass_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_AdelHClass_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_AdelHClass_speedyear, 1929) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -219,7 +279,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_AdelHClass, 256) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    57;
         running_cost_factor:            93;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          260 kW;
         weight:                         23;
         cargo_capacity:                 104;
@@ -240,6 +300,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_AdelHClass, 256) {
 
     graphics {
         purchase:                       spriteset_AdelHClass_purchase;
+        speed:                          80*param_speedmod/100/8*switch_AdelHClass_speedyear();
+        cost_factor:			57 * param_purchase_cost;
+        running_cost_factor:		93 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 104 / cargo_unit_weight;
 
@@ -303,6 +366,12 @@ switch (FEAT_ROADVEHS, SELF, switch_AdelTypeB_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_AdelTypeB_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_AdelTypeB_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_AdelTypeB_speedyear, 1910) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -318,7 +387,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_AdelTypeB, 257) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    33;
         running_cost_factor:            61;
-        speed:                          48*param_speedmod/100 km/h;
+        speed:                          48 km/h;
         power:                          68 kW;
         weight:                         11;
         cargo_capacity:                 100;
@@ -339,6 +408,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_AdelTypeB, 257) {
 
     graphics {
         purchase:                       spriteset_AdelTypeB_purchase;
+        speed:                          48*param_speedmod/100/8*switch_AdelTypeB_speedyear();
+        cost_factor:			33 * param_purchase_cost;
+        running_cost_factor:		61 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 100 / cargo_unit_weight;
 
@@ -407,6 +479,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Amst491_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_Amst491_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Amst491_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Amst491_speedyear, 1948) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -438,7 +516,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Amst491, 258) {
         loading_speed:                  25; //should be 5*number of doors
         cost_factor:                    33;
         running_cost_factor:            67;
-        speed:                          55*param_speedmod/100 km/h;
+        speed:                          55 km/h;
         power:                          135 kW;
         weight:                         13;
         cargo_capacity:                 102;
@@ -459,6 +537,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Amst491, 258) {
 
     graphics {
         purchase:                       spriteset_Amst491_purchase;
+        speed:                          55*param_speedmod/100/8*switch_Amst491_speedyear();
+        cost_factor:			33 * param_purchase_cost;
+        running_cost_factor:		67 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_Amst491_articulated;
         length:                         switch_Amst491_length;
@@ -534,6 +615,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Amst8G_graphics, (extra_callback_info1 & 0xF
 	0x10..0x12: switch_Amst8G_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Amst8G_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Amst8G_speedyear, 1974) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -567,7 +654,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Amst8G, 259) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    58;
         running_cost_factor:            113;
-        speed:                          50*param_speedmod/100 km/h;
+        speed:                          50 km/h;
         power:                          285 kW;
         weight:                         30;
         cargo_capacity:                 159;
@@ -588,6 +675,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Amst8G, 259) {
 
     graphics {
         purchase:                       spriteset_Amst8G_purchase;
+        speed:                          50*param_speedmod/100/8*switch_Amst8G_speedyear();
+        cost_factor:			58 * param_purchase_cost;
+        running_cost_factor:		113 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_Amst8G_articulated;
         length:                         switch_Amst8G_length;
@@ -653,6 +743,12 @@ switch (FEAT_ROADVEHS, SELF, switch_BerlMaximum24_graphics, (extra_callback_info
 	0x10..0x12: switch_BerlMaximum24_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_BerlMaximum24_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_BerlMaximum24_speedyear, 1908) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -668,7 +764,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_BerlMaximum24, 260) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    29;
         running_cost_factor:            50;
-        speed:                          30*param_speedmod/100 km/h;
+        speed:                          30 km/h;
         power:                          120 kW;
         weight:                         14;
         cargo_capacity:                 65;
@@ -689,6 +785,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_BerlMaximum24, 260) {
 
     graphics {
         purchase:                       spriteset_BerlMaximum24_purchase;
+        speed:                          30*param_speedmod/100/8*switch_BerlMaximum24_speedyear();
+        cost_factor:			29 * param_purchase_cost;
+        running_cost_factor:		50 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 65 / cargo_unit_weight;
 
@@ -757,6 +856,12 @@ switch (FEAT_ROADVEHS, SELF, switch_BerlT24_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_BerlT24_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_BerlT24_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_BerlT24_speedyear, 1924) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -788,7 +893,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_BerlT24, 261) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    36;
         running_cost_factor:            78;
-        speed:                          30*param_speedmod/100 km/h;
+        speed:                          30 km/h;
         power:                          160 kW;
         weight:                         20;
         cargo_capacity:                 122;
@@ -809,6 +914,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_BerlT24, 261) {
 
     graphics {
         purchase:                       spriteset_BerlT24_purchase;
+        speed:                          30*param_speedmod/100/8*switch_BerlT24_speedyear();
+        cost_factor:			36 * param_purchase_cost;
+        running_cost_factor:		78 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_BerlT24_articulated;
         length:                         switch_BerlT24_length;
@@ -874,6 +982,12 @@ switch (FEAT_ROADVEHS, SELF, switch_BernMekarski_graphics, (extra_callback_info1
 	0x10..0x12: switch_BernMekarski_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_BernMekarski_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_BernMekarski_speedyear, 1889) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -889,7 +1003,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_BernMekarski, 262) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    13;
         running_cost_factor:            32;
-        speed:                          15*param_speedmod/100 km/h;
+        speed:                          15 km/h;
         power:                          10 kW;
         weight:                         10;
         cargo_capacity:                 42;
@@ -910,6 +1024,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_BernMekarski, 262) {
 
     graphics {
         purchase:                       spriteset_BernMekarski_purchase;
+        speed:                          15*param_speedmod/100/8*switch_BernMekarski_speedyear();
+        cost_factor:			13 * param_purchase_cost;
+        running_cost_factor:		32 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 42 / cargo_unit_weight;
 
@@ -973,6 +1090,12 @@ switch (FEAT_ROADVEHS, SELF, switch_BlacBalloon_graphics, (extra_callback_info1 
 	0x10..0x12: switch_BlacBalloon_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_BlacBalloon_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_BlacBalloon_speedyear, 1934) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -988,7 +1111,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_BlacBalloon, 263) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    29;
         running_cost_factor:            106;
-        speed:                          69*param_speedmod/100 km/h;
+        speed:                          69 km/h;
         power:                          57 kW;
         weight:                         34;
         cargo_capacity:                 90;
@@ -1009,6 +1132,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_BlacBalloon, 263) {
 
     graphics {
         purchase:                       spriteset_BlacBalloon_purchase;
+        speed:                          69*param_speedmod/100/8*switch_BlacBalloon_speedyear();
+        cost_factor:			29 * param_purchase_cost;
+        running_cost_factor:		106 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 90 / cargo_unit_weight;
 
@@ -1077,6 +1203,12 @@ switch (FEAT_ROADVEHS, SELF, switch_BostType7_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_BostType7_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_BostType7_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_BostType7_speedyear, 1986) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -1108,7 +1240,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_BostType7, 264) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    73;
         running_cost_factor:            153;
-        speed:                          88*param_speedmod/100 km/h;
+        speed:                          88 km/h;
         power:                          268 kW;
         weight:                         43;
         cargo_capacity:                 170;
@@ -1129,6 +1261,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_BostType7, 264) {
 
     graphics {
         purchase:                       spriteset_BostType7_purchase;
+        speed:                          88*param_speedmod/100/8*switch_BostType7_speedyear();
+        cost_factor:			73 * param_purchase_cost;
+        running_cost_factor:		153 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_BostType7_articulated;
         length:                         switch_BostType7_length;
@@ -1199,6 +1334,12 @@ switch (FEAT_ROADVEHS, SELF, switch_BrnoTatraK2_graphics, (extra_callback_info1 
 	0x10..0x12: switch_BrnoTatraK2_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_BrnoTatraK2_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_BrnoTatraK2_speedyear, 1966) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -1230,7 +1371,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_BrnoTatraK2, 265) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    52;
         running_cost_factor:            101;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          215 kW;
         weight:                         22;
         cargo_capacity:                 157;
@@ -1251,6 +1392,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_BrnoTatraK2, 265) {
 
     graphics {
         purchase:                       spriteset_BrnoTatraK2_purchase;
+        speed:                          60*param_speedmod/100/8*switch_BrnoTatraK2_speedyear();
+        cost_factor:			52 * param_purchase_cost;
+        running_cost_factor:		101 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_BrnoTatraK2_articulated;
         length:                         switch_BrnoTatraK2_length;
@@ -1326,6 +1470,12 @@ switch (FEAT_ROADVEHS, SELF, switch_BrnoTatraKT85D_graphics, (extra_callback_inf
 	0x10..0x12: switch_BrnoTatraKT85D_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_BrnoTatraKT85D_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_BrnoTatraKT85D_speedyear, 1984) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -1359,7 +1509,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_BrnoTatraKT85D, 266) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    87;
         running_cost_factor:            154;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          489 kW;
         weight:                         38;
         cargo_capacity:                 231;
@@ -1380,6 +1530,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_BrnoTatraKT85D, 266) {
 
     graphics {
         purchase:                       spriteset_BrnoTatraKT85D_purchase;
+        speed:                          65*param_speedmod/100/8*switch_BrnoTatraKT85D_speedyear();
+        cost_factor:			87 * param_purchase_cost;
+        running_cost_factor:		154 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_BrnoTatraKT85D_articulated;
         length:                         switch_BrnoTatraKT85D_length;
@@ -1445,6 +1598,12 @@ switch (FEAT_ROADVEHS, SELF, switch_BudaLorinci_graphics, (extra_callback_info1 
 	0x10..0x12: switch_BudaLorinci_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_BudaLorinci_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_BudaLorinci_speedyear, 1911) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -1460,7 +1619,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_BudaLorinci, 267) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    32;
         running_cost_factor:            62;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          110 kW;
         weight:                         20;
         cargo_capacity:                 60;
@@ -1481,6 +1640,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_BudaLorinci, 267) {
 
     graphics {
         purchase:                       spriteset_BudaLorinci_purchase;
+        speed:                          40*param_speedmod/100/8*switch_BudaLorinci_speedyear();
+        cost_factor:			32 * param_purchase_cost;
+        running_cost_factor:		62 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 60 / cargo_unit_weight;
 
@@ -1564,6 +1726,12 @@ switch (FEAT_ROADVEHS, SELF, switch_CaglSkoda06T_graphics, (extra_callback_info1
 	0x10..0x12: switch_CaglSkoda06T_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_CaglSkoda06T_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_CaglSkoda06T_speedyear, 2007) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -1601,7 +1769,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_CaglSkoda06T, 268) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    106;
         running_cost_factor:            172;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          620 kW;
         weight:                         38;
         cargo_capacity:                 255;
@@ -1622,6 +1790,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_CaglSkoda06T, 268) {
 
     graphics {
         purchase:                       spriteset_CaglSkoda06T_purchase;
+        speed:                          70*param_speedmod/100/8*switch_CaglSkoda06T_speedyear();
+        cost_factor:			106 * param_purchase_cost;
+        running_cost_factor:		172 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_CaglSkoda06T_articulated;
         length:                         switch_CaglSkoda06T_length;
@@ -1687,6 +1858,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Chan200Series_graphics, (extra_callback_info
 	0x10..0x12: switch_Chan200Series_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Chan200Series_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Chan200Series_speedyear, 1941) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -1702,7 +1879,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Chan200Series, 269) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    35;
         running_cost_factor:            91;
-        speed:                          50*param_speedmod/100 km/h;
+        speed:                          50 km/h;
         power:                          100 kW;
         weight:                         19;
         cargo_capacity:                 150;
@@ -1723,6 +1900,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Chan200Series, 269) {
 
     graphics {
         purchase:                       spriteset_Chan200Series_purchase;
+        speed:                          50*param_speedmod/100/8*switch_Chan200Series_speedyear();
+        cost_factor:			35 * param_purchase_cost;
+        running_cost_factor:		91 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 150 / cargo_unit_weight;
 
@@ -1796,6 +1976,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ChriRowanPatent_graphics, (extra_callback_in
 	0x10..0x12: switch_ChriRowanPatent_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ChriRowanPatent_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ChriRowanPatent_speedyear, 1881) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -1829,7 +2015,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ChriRowanPatent, 270) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    29;
         running_cost_factor:            66;
-        speed:                          16*param_speedmod/100 km/h;
+        speed:                          16 km/h;
         power:                          40 kW;
         weight:                         26;
         cargo_capacity:                 60;
@@ -1850,6 +2036,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ChriRowanPatent, 270) {
 
     graphics {
         purchase:                       spriteset_ChriRowanPatent_purchase;
+        speed:                          16*param_speedmod/100/8*switch_ChriRowanPatent_speedyear();
+        cost_factor:			29 * param_purchase_cost;
+        running_cost_factor:		66 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_ChriRowanPatent_articulated;
         length:                         switch_ChriRowanPatent_length;
@@ -1915,6 +2104,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ClevInterurbanStandard_graphics, (extra_call
 	0x10..0x12: switch_ClevInterurbanStandard_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ClevInterurbanStandard_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ClevInterurbanStandard_speedyear, 1904) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -1930,7 +2125,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ClevInterurbanStandard, 271) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    75;
         running_cost_factor:            98;
-        speed:                          48*param_speedmod/100 km/h;
+        speed:                          48 km/h;
         power:                          500 kW;
         weight:                         31;
         cargo_capacity:                 104;
@@ -1951,6 +2146,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ClevInterurbanStandard, 271) {
 
     graphics {
         purchase:                       spriteset_ClevInterurbanStandard_purchase;
+        speed:                          48*param_speedmod/100/8*switch_ClevInterurbanStandard_speedyear();
+        cost_factor:			75 * param_purchase_cost;
+        running_cost_factor:		98 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 104 / cargo_unit_weight;
 
@@ -2014,6 +2212,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ClevPeterWitt_graphics, (extra_callback_info
 	0x10..0x12: switch_ClevPeterWitt_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ClevPeterWitt_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ClevPeterWitt_speedyear, 1913) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -2029,7 +2233,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ClevPeterWitt, 272) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    42;
         running_cost_factor:            86;
-        speed:                          48*param_speedmod/100 km/h;
+        speed:                          48 km/h;
         power:                          192 kW;
         weight:                         25;
         cargo_capacity:                 100;
@@ -2050,6 +2254,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ClevPeterWitt, 272) {
 
     graphics {
         purchase:                       spriteset_ClevPeterWitt_purchase;
+        speed:                          48*param_speedmod/100/8*switch_ClevPeterWitt_speedyear();
+        cost_factor:			42 * param_purchase_cost;
+        running_cost_factor:		86 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 100 / cargo_unit_weight;
 
@@ -2133,6 +2340,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ClujPESA120Na_graphics, (extra_callback_info
 	0x10..0x12: switch_ClujPESA120Na_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ClujPESA120Na_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ClujPESA120Na_speedyear, 2013) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -2170,7 +2383,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ClujPESA120Na, 273) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    103;
         running_cost_factor:            160;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          563 kW;
         weight:                         45;
         cargo_capacity:                 201;
@@ -2191,6 +2404,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ClujPESA120Na, 273) {
 
     graphics {
         purchase:                       spriteset_ClujPESA120Na_purchase;
+        speed:                          70*param_speedmod/100/8*switch_ClujPESA120Na_speedyear();
+        cost_factor:			103 * param_purchase_cost;
+        running_cost_factor:		160 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_ClujPESA120Na_articulated;
         length:                         switch_ClujPESA120Na_length;
@@ -2286,6 +2502,12 @@ switch (FEAT_ROADVEHS, SELF, switch_CuiaCAFUrbos3_graphics, (extra_callback_info
 	0x10..0x12: switch_CuiaCAFUrbos3_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_CuiaCAFUrbos3_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_CuiaCAFUrbos3_speedyear, 2015) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -2327,7 +2549,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_CuiaCAFUrbos3, 274) {
         loading_speed:                  70; //should be 5*number of doors
         cost_factor:                    140;
         running_cost_factor:            246;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          761 kW;
         weight:                         57;
         cargo_capacity:                 255;
@@ -2348,6 +2570,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_CuiaCAFUrbos3, 274) {
 
     graphics {
         purchase:                       spriteset_CuiaCAFUrbos3_purchase;
+        speed:                          80*param_speedmod/100/8*switch_CuiaCAFUrbos3_speedyear();
+        cost_factor:			140 * param_purchase_cost;
+        running_cost_factor:		246 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_CuiaCAFUrbos3_articulated;
         length:                         switch_CuiaCAFUrbos3_length;
@@ -2413,6 +2638,12 @@ switch (FEAT_ROADVEHS, SELF, switch_DaliDL8000_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_DaliDL8000_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_DaliDL8000_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_DaliDL8000_speedyear, 1998) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -2428,7 +2659,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_DaliDL8000, 275) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    36;
         running_cost_factor:            104;
-        speed:                          50*param_speedmod/100 km/h;
+        speed:                          50 km/h;
         power:                          100 kW;
         weight:                         20;
         cargo_capacity:                 190;
@@ -2449,6 +2680,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_DaliDL8000, 275) {
 
     graphics {
         purchase:                       spriteset_DaliDL8000_purchase;
+        speed:                          50*param_speedmod/100/8*switch_DaliDL8000_speedyear();
+        cost_factor:			36 * param_purchase_cost;
+        running_cost_factor:		104 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 190 / cargo_unit_weight;
 
@@ -2512,6 +2746,12 @@ switch (FEAT_ROADVEHS, SELF, switch_DresTatraT4D_graphics, (extra_callback_info1
 	0x10..0x12: switch_DresTatraT4D_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_DresTatraT4D_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_DresTatraT4D_speedyear, 1967) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -2527,7 +2767,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_DresTatraT4D, 276) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    46;
         running_cost_factor:            79;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          235 kW;
         weight:                         16;
         cargo_capacity:                 114;
@@ -2548,6 +2788,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_DresTatraT4D, 276) {
 
     graphics {
         purchase:                       spriteset_DresTatraT4D_purchase;
+        speed:                          65*param_speedmod/100/8*switch_DresTatraT4D_speedyear();
+        cost_factor:			46 * param_purchase_cost;
+        running_cost_factor:		79 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 114 / cargo_unit_weight;
 
@@ -2611,6 +2854,12 @@ switch (FEAT_ROADVEHS, SELF, switch_DresTatraT6A2_graphics, (extra_callback_info
 	0x10..0x12: switch_DresTatraT6A2_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_DresTatraT6A2_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_DresTatraT6A2_speedyear, 1985) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -2626,7 +2875,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_DresTatraT6A2, 277) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    48;
         running_cost_factor:            90;
-        speed:                          55*param_speedmod/100 km/h;
+        speed:                          55 km/h;
         power:                          245 kW;
         weight:                         18;
         cargo_capacity:                 149;
@@ -2647,6 +2896,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_DresTatraT6A2, 277) {
 
     graphics {
         purchase:                       spriteset_DresTatraT6A2_purchase;
+        speed:                          55*param_speedmod/100/8*switch_DresTatraT6A2_speedyear();
+        cost_factor:			48 * param_purchase_cost;
+        running_cost_factor:		90 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 149 / cargo_unit_weight;
 
@@ -2710,6 +2962,12 @@ switch (FEAT_ROADVEHS, SELF, switch_DubrTram_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_DubrTram_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_DubrTram_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_DubrTram_speedyear, 1910) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -2725,7 +2983,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_DubrTram, 278) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    25;
         running_cost_factor:            32;
-        speed:                          10*param_speedmod/100 km/h;
+        speed:                          10 km/h;
         power:                          75 kW;
         weight:                         12;
         cargo_capacity:                 36;
@@ -2746,6 +3004,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_DubrTram, 278) {
 
     graphics {
         purchase:                       spriteset_DubrTram_purchase;
+        speed:                          10*param_speedmod/100/8*switch_DubrTram_speedyear();
+        cost_factor:			25 * param_purchase_cost;
+        running_cost_factor:		32 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 36 / cargo_unit_weight;
 
@@ -2819,6 +3080,12 @@ switch (FEAT_ROADVEHS, SELF, switch_FranPTw_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_FranPTw_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_FranPTw_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_FranPTw_speedyear, 1972) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -2852,7 +3119,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_FranPTw, 279) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    79;
         running_cost_factor:            154;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          322 kW;
         weight:                         35;
         cargo_capacity:                 242;
@@ -2873,6 +3140,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_FranPTw, 279) {
 
     graphics {
         purchase:                       spriteset_FranPTw_purchase;
+        speed:                          70*param_speedmod/100/8*switch_FranPTw_speedyear();
+        cost_factor:			79 * param_purchase_cost;
+        running_cost_factor:		154 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_FranPTw_articulated;
         length:                         switch_FranPTw_length;
@@ -2938,6 +3208,12 @@ switch (FEAT_ROADVEHS, SELF, switch_GothMB01_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_GothMB01_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_GothMB01_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_GothMB01_speedyear, 1922) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -2953,7 +3229,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_GothMB01, 280) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    35;
         running_cost_factor:            83;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          183 kW;
         weight:                         24;
         cargo_capacity:                 86;
@@ -2974,6 +3250,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_GothMB01, 280) {
 
     graphics {
         purchase:                       spriteset_GothMB01_purchase;
+        speed:                          60*param_speedmod/100/8*switch_GothMB01_speedyear();
+        cost_factor:			35 * param_purchase_cost;
+        running_cost_factor:		83 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 86 / cargo_unit_weight;
 
@@ -3037,6 +3316,12 @@ switch (FEAT_ROADVEHS, SELF, switch_HaguPCC1200_graphics, (extra_callback_info1 
 	0x10..0x12: switch_HaguPCC1200_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_HaguPCC1200_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_HaguPCC1200_speedyear, 1963) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -3052,7 +3337,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_HaguPCC1200, 281) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    47;
         running_cost_factor:            78;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          240 kW;
         weight:                         17;
         cargo_capacity:                 101;
@@ -3073,6 +3358,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_HaguPCC1200, 281) {
 
     graphics {
         purchase:                       spriteset_HaguPCC1200_purchase;
+        speed:                          70*param_speedmod/100/8*switch_HaguPCC1200_speedyear();
+        cost_factor:			47 * param_purchase_cost;
+        running_cost_factor:		78 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 101 / cargo_unit_weight;
 
@@ -3136,6 +3424,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Hels203_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_Hels203_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Hels203_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Hels203_speedyear, 1950) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -3151,7 +3445,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Hels203, 282) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    26;
         running_cost_factor:            55;
-        speed:                          45*param_speedmod/100 km/h;
+        speed:                          45 km/h;
         power:                          75 kW;
         weight:                         15;
         cargo_capacity:                 59;
@@ -3172,6 +3466,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Hels203, 282) {
 
     graphics {
         purchase:                       spriteset_Hels203_purchase;
+        speed:                          45*param_speedmod/100/8*switch_Hels203_speedyear();
+        cost_factor:			26 * param_purchase_cost;
+        running_cost_factor:		55 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 59 / cargo_unit_weight;
 
@@ -3235,6 +3532,12 @@ switch (FEAT_ROADVEHS, SELF, switch_HongDoubleDeck_graphics, (extra_callback_inf
 	0x10..0x12: switch_HongDoubleDeck_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_HongDoubleDeck_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_HongDoubleDeck_speedyear, 1949) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -3250,7 +3553,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_HongDoubleDeck, 283) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    22;
         running_cost_factor:            62;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          50 kW;
         weight:                         12;
         cargo_capacity:                 105;
@@ -3271,6 +3574,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_HongDoubleDeck, 283) {
 
     graphics {
         purchase:                       spriteset_HongDoubleDeck_purchase;
+        speed:                          40*param_speedmod/100/8*switch_HongDoubleDeck_speedyear();
+        cost_factor:			22 * param_purchase_cost;
+        running_cost_factor:		62 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 105 / cargo_unit_weight;
 
@@ -3344,6 +3650,12 @@ switch (FEAT_ROADVEHS, SELF, switch_HousS70_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_HousS70_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_HousS70_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_HousS70_speedyear, 2004) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -3377,7 +3689,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_HousS70, 284) {
         loading_speed:                  80; //should be 5*number of doors
         cost_factor:                    123;
         running_cost_factor:            219;
-        speed:                          106*param_speedmod/100 km/h;
+        speed:                          106 km/h;
         power:                          520 kW;
         weight:                         63;
         cargo_capacity:                 241;
@@ -3398,6 +3710,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_HousS70, 284) {
 
     graphics {
         purchase:                       spriteset_HousS70_purchase;
+        speed:                          106*param_speedmod/100/8*switch_HousS70_speedyear();
+        cost_factor:			123 * param_purchase_cost;
+        running_cost_factor:		219 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_HousS70_articulated;
         length:                         switch_HousS70_length;
@@ -3463,6 +3778,12 @@ switch (FEAT_ROADVEHS, SELF, switch_IndiCoachParlor_graphics, (extra_callback_in
 	0x10..0x12: switch_IndiCoachParlor_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_IndiCoachParlor_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_IndiCoachParlor_speedyear, 1930) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -3478,7 +3799,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_IndiCoachParlor, 285) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    56;
         running_cost_factor:            92;
-        speed:                          134*param_speedmod/100 km/h;
+        speed:                          134 km/h;
         power:                          400 kW;
         weight:                         24;
         cargo_capacity:                 40;
@@ -3499,6 +3820,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_IndiCoachParlor, 285) {
 
     graphics {
         purchase:                       spriteset_IndiCoachParlor_purchase;
+        speed:                          134*param_speedmod/100/8*switch_IndiCoachParlor_speedyear();
+        cost_factor:			56 * param_purchase_cost;
+        running_cost_factor:		92 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 40 / cargo_unit_weight;
 
@@ -3572,6 +3896,12 @@ switch (FEAT_ROADVEHS, SELF, switch_IstaAlstomX04_graphics, (extra_callback_info
 	0x10..0x12: switch_IstaAlstomX04_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_IstaAlstomX04_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_IstaAlstomX04_speedyear, 2011) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -3605,7 +3935,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_IstaAlstomX04, 286) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    129;
         running_cost_factor:            151;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          761 kW;
         weight:                         44;
         cargo_capacity:                 176;
@@ -3626,6 +3956,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_IstaAlstomX04, 286) {
 
     graphics {
         purchase:                       spriteset_IstaAlstomX04_purchase;
+        speed:                          70*param_speedmod/100/8*switch_IstaAlstomX04_speedyear();
+        cost_factor:			129 * param_purchase_cost;
+        running_cost_factor:		151 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_IstaAlstomX04_articulated;
         length:                         switch_IstaAlstomX04_length;
@@ -3696,6 +4029,12 @@ switch (FEAT_ROADVEHS, SELF, switch_KolkTram_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_KolkTram_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_KolkTram_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_KolkTram_speedyear, 1902) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -3727,7 +4066,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_KolkTram, 287) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    52;
         running_cost_factor:            121;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          220 kW;
         weight:                         21;
         cargo_capacity:                 248;
@@ -3748,6 +4087,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_KolkTram, 287) {
 
     graphics {
         purchase:                       spriteset_KolkTram_purchase;
+        speed:                          40*param_speedmod/100/8*switch_KolkTram_speedyear();
+        cost_factor:			52 * param_purchase_cost;
+        running_cost_factor:		121 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_KolkTram_articulated;
         length:                         switch_KolkTram_length;
@@ -3813,6 +4155,12 @@ switch (FEAT_ROADVEHS, SELF, switch_KrakSN1_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_KrakSN1_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_KrakSN1_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_KrakSN1_speedyear, 1912) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -3828,7 +4176,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_KrakSN1, 288) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    21;
         running_cost_factor:            49;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          88 kW;
         weight:                         13;
         cargo_capacity:                 56;
@@ -3849,6 +4197,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_KrakSN1, 288) {
 
     graphics {
         purchase:                       spriteset_KrakSN1_purchase;
+        speed:                          40*param_speedmod/100/8*switch_KrakSN1_speedyear();
+        cost_factor:			21 * param_purchase_cost;
+        running_cost_factor:		49 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 56 / cargo_unit_weight;
 
@@ -3912,6 +4263,12 @@ switch (FEAT_ROADVEHS, SELF, switch_LisbBrill_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_LisbBrill_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_LisbBrill_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_LisbBrill_speedyear, 1901) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -3927,7 +4284,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_LisbBrill, 289) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    20;
         running_cost_factor:            36;
-        speed:                          30*param_speedmod/100 km/h;
+        speed:                          30 km/h;
         power:                          100 kW;
         weight:                         8;
         cargo_capacity:                 52;
@@ -3948,6 +4305,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_LisbBrill, 289) {
 
     graphics {
         purchase:                       spriteset_LisbBrill_purchase;
+        speed:                          30*param_speedmod/100/8*switch_LisbBrill_speedyear();
+        cost_factor:			20 * param_purchase_cost;
+        running_cost_factor:		36 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 52 / cargo_unit_weight;
 
@@ -4011,6 +4371,12 @@ switch (FEAT_ROADVEHS, SELF, switch_LodzHerbrand_graphics, (extra_callback_info1
 	0x10..0x12: switch_LodzHerbrand_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_LodzHerbrand_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_LodzHerbrand_speedyear, 1898) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -4026,7 +4392,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_LodzHerbrand, 290) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    21;
         running_cost_factor:            36;
-        speed:                          35*param_speedmod/100 km/h;
+        speed:                          35 km/h;
         power:                          51 kW;
         weight:                         8;
         cargo_capacity:                 44;
@@ -4047,6 +4413,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_LodzHerbrand, 290) {
 
     graphics {
         purchase:                       spriteset_LodzHerbrand_purchase;
+        speed:                          35*param_speedmod/100/8*switch_LodzHerbrand_speedyear();
+        cost_factor:			21 * param_purchase_cost;
+        running_cost_factor:		36 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 44 / cargo_unit_weight;
 
@@ -4120,6 +4489,12 @@ switch (FEAT_ROADVEHS, SELF, switch_LondCR4000_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_LondCR4000_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_LondCR4000_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_LondCR4000_speedyear, 2000) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -4153,7 +4528,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_LondCR4000, 291) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    102;
         running_cost_factor:            148;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          644 kW;
         weight:                         36;
         cargo_capacity:                 208;
@@ -4174,6 +4549,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_LondCR4000, 291) {
 
     graphics {
         purchase:                       spriteset_LondCR4000_purchase;
+        speed:                          80*param_speedmod/100/8*switch_LondCR4000_speedyear();
+        cost_factor:			102 * param_purchase_cost;
+        running_cost_factor:		148 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_LondCR4000_articulated;
         length:                         switch_LondCR4000_length;
@@ -4239,6 +4617,12 @@ switch (FEAT_ROADVEHS, SELF, switch_LondJohnGranthams_graphics, (extra_callback_
 	0x10..0x12: switch_LondJohnGranthams_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_LondJohnGranthams_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_LondJohnGranthams_speedyear, 1873) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -4254,7 +4638,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_LondJohnGranthams, 292) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    14;
         running_cost_factor:            32;
-        speed:                          18*param_speedmod/100 km/h;
+        speed:                          18 km/h;
         power:                          18 kW;
         weight:                         9;
         cargo_capacity:                 45;
@@ -4275,6 +4659,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_LondJohnGranthams, 292) {
 
     graphics {
         purchase:                       spriteset_LondJohnGranthams_purchase;
+        speed:                          18*param_speedmod/100/8*switch_LondJohnGranthams_speedyear();
+        cost_factor:			14 * param_purchase_cost;
+        running_cost_factor:		32 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 45 / cargo_unit_weight;
 
@@ -4348,6 +4735,12 @@ switch (FEAT_ROADVEHS, SELF, switch_LosAAmeriTram300_graphics, (extra_callback_i
 	0x10..0x12: switch_LosAAmeriTram300_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_LosAAmeriTram300_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_LosAAmeriTram300_speedyear, 2016) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -4381,7 +4774,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_LosAAmeriTram300, 293) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    96;
         running_cost_factor:            113;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          653 kW;
         weight:                         32;
         cargo_capacity:                 115;
@@ -4402,6 +4795,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_LosAAmeriTram300, 293) {
 
     graphics {
         purchase:                       spriteset_LosAAmeriTram300_purchase;
+        speed:                          80*param_speedmod/100/8*switch_LosAAmeriTram300_speedyear();
+        cost_factor:			96 * param_purchase_cost;
+        running_cost_factor:		113 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_LosAAmeriTram300_articulated;
         length:                         switch_LosAAmeriTram300_length;
@@ -4487,6 +4883,12 @@ switch (FEAT_ROADVEHS, SELF, switch_LvivT5L64_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_LvivT5L64_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_LvivT5L64_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_LvivT5L64_speedyear, 2013) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -4524,7 +4926,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_LvivT5L64, 294) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    101;
         running_cost_factor:            177;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          536 kW;
         weight:                         46;
         cargo_capacity:                 250;
@@ -4545,6 +4947,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_LvivT5L64, 294) {
 
     graphics {
         purchase:                       spriteset_LvivT5L64_purchase;
+        speed:                          70*param_speedmod/100/8*switch_LvivT5L64_speedyear();
+        cost_factor:			101 * param_purchase_cost;
+        running_cost_factor:		177 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_LvivT5L64_articulated;
         length:                         switch_LvivT5L64_length;
@@ -4615,6 +5020,12 @@ switch (FEAT_ROADVEHS, SELF, switch_LvivTatraKT4_graphics, (extra_callback_info1
 	0x10..0x12: switch_LvivTatraKT4_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_LvivTatraKT4_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_LvivTatraKT4_speedyear, 1976) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -4646,7 +5057,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_LvivTatraKT4, 295) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    51;
         running_cost_factor:            114;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          218 kW;
         weight:                         20;
         cargo_capacity:                 206;
@@ -4667,6 +5078,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_LvivTatraKT4, 295) {
 
     graphics {
         purchase:                       spriteset_LvivTatraKT4_purchase;
+        speed:                          65*param_speedmod/100/8*switch_LvivTatraKT4_speedyear();
+        cost_factor:			51 * param_purchase_cost;
+        running_cost_factor:		114 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_LvivTatraKT4_articulated;
         length:                         switch_LvivTatraKT4_length;
@@ -4737,6 +5151,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MancT68_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_MancT68_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MancT68_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MancT68_speedyear, 1992) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -4768,7 +5188,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MancT68, 296) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    108;
         running_cost_factor:            164;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          652 kW;
         weight:                         45;
         cargo_capacity:                 204;
@@ -4789,6 +5209,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MancT68, 296) {
 
     graphics {
         purchase:                       spriteset_MancT68_purchase;
+        speed:                          80*param_speedmod/100/8*switch_MancT68_speedyear();
+        cost_factor:			108 * param_purchase_cost;
+        running_cost_factor:		164 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_MancT68_articulated;
         length:                         switch_MancT68_length;
@@ -4859,6 +5282,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MancWilkinsonPatent_graphics, (extra_callbac
 	0x10..0x12: switch_MancWilkinsonPatent_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MancWilkinsonPatent_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MancWilkinsonPatent_speedyear, 1884) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -4890,7 +5319,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MancWilkinsonPatent, 297) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    22;
         running_cost_factor:            34;
-        speed:                          20*param_speedmod/100 km/h;
+        speed:                          20 km/h;
         power:                          26 kW;
         weight:                         14;
         cargo_capacity:                 20;
@@ -4911,6 +5340,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MancWilkinsonPatent, 297) {
 
     graphics {
         purchase:                       spriteset_MancWilkinsonPatent_purchase;
+        speed:                          20*param_speedmod/100/8*switch_MancWilkinsonPatent_speedyear();
+        cost_factor:			22 * param_purchase_cost;
+        running_cost_factor:		34 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_MancWilkinsonPatent_articulated;
         length:                         switch_MancWilkinsonPatent_length;
@@ -4986,6 +5418,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ManiTatraRT8D5_graphics, (extra_callback_inf
 	0x10..0x12: switch_ManiTatraRT8D5_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ManiTatraRT8D5_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ManiTatraRT8D5_speedyear, 1998) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -5019,7 +5457,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ManiTatraRT8D5, 298) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    118;
         running_cost_factor:            185;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          696 kW;
         weight:                         47;
         cargo_capacity:                 255;
@@ -5040,6 +5478,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ManiTatraRT8D5, 298) {
 
     graphics {
         purchase:                       spriteset_ManiTatraRT8D5_purchase;
+        speed:                          65*param_speedmod/100/8*switch_ManiTatraRT8D5_speedyear();
+        cost_factor:			118 * param_purchase_cost;
+        running_cost_factor:		185 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_ManiTatraRT8D5_articulated;
         length:                         switch_ManiTatraRT8D5_length;
@@ -5105,6 +5546,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Manx4_graphics, (extra_callback_info1 & 0xFF
 	0x10..0x12: switch_Manx4_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Manx4_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Manx4_speedyear, 1894) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -5120,7 +5567,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Manx4, 299) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    24;
         running_cost_factor:            45;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          100 kW;
         weight:                         16;
         cargo_capacity:                 26;
@@ -5141,6 +5588,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Manx4, 299) {
 
     graphics {
         purchase:                       spriteset_Manx4_purchase;
+        speed:                          40*param_speedmod/100/8*switch_Manx4_speedyear();
+        cost_factor:			24 * param_purchase_cost;
+        running_cost_factor:		45 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 26 / cargo_unit_weight;
 
@@ -5204,6 +5654,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MelbABClass_graphics, (extra_callback_info1 
 	0x10..0x12: switch_MelbABClass_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MelbABClass_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MelbABClass_speedyear, 1909) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -5219,7 +5675,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbABClass, 300) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    24;
         running_cost_factor:            63;
-        speed:                          48*param_speedmod/100 km/h;
+        speed:                          48 km/h;
         power:                          68 kW;
         weight:                         12;
         cargo_capacity:                 102;
@@ -5240,6 +5696,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbABClass, 300) {
 
     graphics {
         purchase:                       spriteset_MelbABClass_purchase;
+        speed:                          48*param_speedmod/100/8*switch_MelbABClass_speedyear();
+        cost_factor:			24 * param_purchase_cost;
+        running_cost_factor:		63 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 102 / cargo_unit_weight;
 
@@ -5303,6 +5762,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MelbAClass_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_MelbAClass_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MelbAClass_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MelbAClass_speedyear, 1984) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -5318,7 +5783,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbAClass, 301) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    66;
         running_cost_factor:            98;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          355 kW;
         weight:                         22;
         cargo_capacity:                 138;
@@ -5339,6 +5804,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbAClass, 301) {
 
     graphics {
         purchase:                       spriteset_MelbAClass_purchase;
+        speed:                          70*param_speedmod/100/8*switch_MelbAClass_speedyear();
+        cost_factor:			66 * param_purchase_cost;
+        running_cost_factor:		98 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 138 / cargo_unit_weight;
 
@@ -5407,6 +5875,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MelbBClass_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_MelbBClass_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MelbBClass_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MelbBClass_speedyear, 1987) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -5438,7 +5912,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbBClass, 302) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    94;
         running_cost_factor:            139;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          530 kW;
         weight:                         33;
         cargo_capacity:                 205;
@@ -5459,6 +5933,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbBClass, 302) {
 
     graphics {
         purchase:                       spriteset_MelbBClass_purchase;
+        speed:                          70*param_speedmod/100/8*switch_MelbBClass_speedyear();
+        cost_factor:			94 * param_purchase_cost;
+        running_cost_factor:		139 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_MelbBClass_articulated;
         length:                         switch_MelbBClass_length;
@@ -5534,6 +6011,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MelbD1Class_graphics, (extra_callback_info1 
 	0x10..0x12: switch_MelbD1Class_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MelbD1Class_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MelbD1Class_speedyear, 2002) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -5567,7 +6050,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbD1Class, 303) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    96;
         running_cost_factor:            106;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          536 kW;
         weight:                         26;
         cargo_capacity:                 140;
@@ -5588,6 +6071,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbD1Class, 303) {
 
     graphics {
         purchase:                       spriteset_MelbD1Class_purchase;
+        speed:                          70*param_speedmod/100/8*switch_MelbD1Class_speedyear();
+        cost_factor:			96 * param_purchase_cost;
+        running_cost_factor:		106 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_MelbD1Class_articulated;
         length:                         switch_MelbD1Class_length;
@@ -5653,6 +6139,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MelbWClass_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_MelbWClass_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MelbWClass_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MelbWClass_speedyear, 1923) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -5668,7 +6160,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbWClass, 304) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    45;
         running_cost_factor:            87;
-        speed:                          50*param_speedmod/100 km/h;
+        speed:                          50 km/h;
         power:                          163 kW;
         weight:                         18;
         cargo_capacity:                 145;
@@ -5689,6 +6181,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbWClass, 304) {
 
     graphics {
         purchase:                       spriteset_MelbWClass_purchase;
+        speed:                          50*param_speedmod/100/8*switch_MelbWClass_speedyear();
+        cost_factor:			45 * param_purchase_cost;
+        running_cost_factor:		87 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 145 / cargo_unit_weight;
 
@@ -5752,6 +6247,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MelbZ1Class_graphics, (extra_callback_info1 
 	0x10..0x12: switch_MelbZ1Class_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MelbZ1Class_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MelbZ1Class_speedyear, 1975) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -5767,7 +6268,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbZ1Class, 305) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    49;
         running_cost_factor:            91;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          305 kW;
         weight:                         19;
         cargo_capacity:                 120;
@@ -5788,6 +6289,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MelbZ1Class, 305) {
 
     graphics {
         purchase:                       spriteset_MelbZ1Class_purchase;
+        speed:                          80*param_speedmod/100/8*switch_MelbZ1Class_speedyear();
+        cost_factor:			49 * param_purchase_cost;
+        running_cost_factor:		91 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 120 / cargo_unit_weight;
 
@@ -5851,6 +6355,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Mila1500_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_Mila1500_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Mila1500_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Mila1500_speedyear, 1927) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -5866,7 +6376,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Mila1500, 306) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    34;
         running_cost_factor:            75;
-        speed:                          42*param_speedmod/100 km/h;
+        speed:                          42 km/h;
         power:                          113 kW;
         weight:                         15;
         cargo_capacity:                 130;
@@ -5887,6 +6397,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Mila1500, 306) {
 
     graphics {
         purchase:                       spriteset_Mila1500_purchase;
+        speed:                          42*param_speedmod/100/8*switch_Mila1500_speedyear();
+        cost_factor:			34 * param_purchase_cost;
+        running_cost_factor:		75 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 130 / cargo_unit_weight;
 
@@ -5955,6 +6468,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Mila4700_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_Mila4700_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Mila4700_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Mila4700_speedyear, 1955) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -5986,7 +6505,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Mila4700, 307) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    58;
         running_cost_factor:            113;
-        speed:                          50*param_speedmod/100 km/h;
+        speed:                          50 km/h;
         power:                          300 kW;
         weight:                         27;
         cargo_capacity:                 175;
@@ -6007,6 +6526,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Mila4700, 307) {
 
     graphics {
         purchase:                       spriteset_Mila4700_purchase;
+        speed:                          50*param_speedmod/100/8*switch_Mila4700_speedyear();
+        cost_factor:			58 * param_purchase_cost;
+        running_cost_factor:		113 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_Mila4700_articulated;
         length:                         switch_Mila4700_length;
@@ -6102,6 +6624,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Mila7100_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_Mila7100_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Mila7100_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Mila7100_speedyear, 2001) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -6143,7 +6671,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Mila7100, 308) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    97;
         running_cost_factor:            180;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          569 kW;
         weight:                         42;
         cargo_capacity:                 255;
@@ -6164,6 +6692,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Mila7100, 308) {
 
     graphics {
         purchase:                       spriteset_Mila7100_purchase;
+        speed:                          70*param_speedmod/100/8*switch_Mila7100_speedyear();
+        cost_factor:			97 * param_purchase_cost;
+        running_cost_factor:		180 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_Mila7100_articulated;
         length:                         switch_Mila7100_length;
@@ -6229,6 +6760,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MoscKM_graphics, (extra_callback_info1 & 0xF
 	0x10..0x12: switch_MoscKM_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MoscKM_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MoscKM_speedyear, 1926) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -6244,7 +6781,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscKM, 309) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    37;
         running_cost_factor:            66;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          163 kW;
         weight:                         11;
         cargo_capacity:                 124;
@@ -6265,6 +6802,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscKM, 309) {
 
     graphics {
         purchase:                       spriteset_MoscKM_purchase;
+        speed:                          40*param_speedmod/100/8*switch_MoscKM_speedyear();
+        cost_factor:			37 * param_purchase_cost;
+        running_cost_factor:		66 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 124 / cargo_unit_weight;
 
@@ -6328,6 +6868,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MoscKTM5_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_MoscKTM5_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MoscKTM5_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MoscKTM5_speedyear, 1963) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -6343,7 +6889,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscKTM5, 310) {
         loading_speed:                  15; //should be 5*number of doors
         cost_factor:                    41;
         running_cost_factor:            97;
-        speed:                          75*param_speedmod/100 km/h;
+        speed:                          75 km/h;
         power:                          245 kW;
         weight:                         19;
         cargo_capacity:                 147;
@@ -6364,6 +6910,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscKTM5, 310) {
 
     graphics {
         purchase:                       spriteset_MoscKTM5_purchase;
+        speed:                          75*param_speedmod/100/8*switch_MoscKTM5_speedyear();
+        cost_factor:			41 * param_purchase_cost;
+        running_cost_factor:		97 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 147 / cargo_unit_weight;
 
@@ -6427,6 +6976,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MoscMTV82A_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_MoscMTV82A_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MoscMTV82A_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MoscMTV82A_speedyear, 1947) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -6442,7 +6997,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscMTV82A, 311) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    43;
         running_cost_factor:            84;
-        speed:                          45*param_speedmod/100 km/h;
+        speed:                          45 km/h;
         power:                          245 kW;
         weight:                         18;
         cargo_capacity:                 140;
@@ -6463,6 +7018,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscMTV82A, 311) {
 
     graphics {
         purchase:                       spriteset_MoscMTV82A_purchase;
+        speed:                          45*param_speedmod/100/8*switch_MoscMTV82A_speedyear();
+        cost_factor:			43 * param_purchase_cost;
+        running_cost_factor:		84 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 140 / cargo_unit_weight;
 
@@ -6526,6 +7084,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MoscOerlikon_graphics, (extra_callback_info1
 	0x10..0x12: switch_MoscOerlikon_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MoscOerlikon_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MoscOerlikon_speedyear, 1896) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -6541,7 +7105,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscOerlikon, 312) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    21;
         running_cost_factor:            37;
-        speed:                          20*param_speedmod/100 km/h;
+        speed:                          20 km/h;
         power:                          16 kW;
         weight:                         14;
         cargo_capacity:                 30;
@@ -6562,6 +7126,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscOerlikon, 312) {
 
     graphics {
         purchase:                       spriteset_MoscOerlikon_purchase;
+        speed:                          20*param_speedmod/100/8*switch_MoscOerlikon_speedyear();
+        cost_factor:			21 * param_purchase_cost;
+        running_cost_factor:		37 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 30 / cargo_unit_weight;
 
@@ -6635,6 +7202,12 @@ switch (FEAT_ROADVEHS, SELF, switch_MoscR1_graphics, (extra_callback_info1 & 0xF
 	0x10..0x12: switch_MoscR1_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_MoscR1_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_MoscR1_speedyear, 2017) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -6668,7 +7241,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscR1, 313) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    98;
         running_cost_factor:            141;
-        speed:                          75*param_speedmod/100 km/h;
+        speed:                          75 km/h;
         power:                          510 kW;
         weight:                         36;
         cargo_capacity:                 190;
@@ -6689,6 +7262,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_MoscR1, 313) {
 
     graphics {
         purchase:                       spriteset_MoscR1_purchase;
+        speed:                          75*param_speedmod/100/8*switch_MoscR1_speedyear();
+        cost_factor:			98 * param_purchase_cost;
+        running_cost_factor:		141 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_MoscR1_articulated;
         length:                         switch_MoscR1_length;
@@ -6754,6 +7330,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Naga1300Series_graphics, (extra_callback_inf
 	0x10..0x12: switch_Naga1300Series_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Naga1300Series_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Naga1300Series_speedyear, 1987) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -6769,7 +7351,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Naga1300Series, 314) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    28;
         running_cost_factor:            66;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          102 kW;
         weight:                         15;
         cargo_capacity:                 72;
@@ -6790,6 +7372,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Naga1300Series, 314) {
 
     graphics {
         purchase:                       spriteset_Naga1300Series_purchase;
+        speed:                          70*param_speedmod/100/8*switch_Naga1300Series_speedyear();
+        cost_factor:			28 * param_purchase_cost;
+        running_cost_factor:		66 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 72 / cargo_unit_weight;
 
@@ -6863,6 +7448,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Naga5000Series_graphics, (extra_callback_inf
 	0x10..0x12: switch_Naga5000Series_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Naga5000Series_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Naga5000Series_speedyear, 2011) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -6896,7 +7487,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Naga5000Series, 315) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    48;
         running_cost_factor:            73;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          228 kW;
         weight:                         22;
         cargo_capacity:                 83;
@@ -6917,6 +7508,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Naga5000Series, 315) {
 
     graphics {
         purchase:                       spriteset_Naga5000Series_purchase;
+        speed:                          40*param_speedmod/100/8*switch_Naga5000Series_speedyear();
+        cost_factor:			48 * param_purchase_cost;
+        running_cost_factor:		73 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_Naga5000Series_articulated;
         length:                         switch_Naga5000Series_length;
@@ -7002,6 +7596,12 @@ switch (FEAT_ROADVEHS, SELF, switch_NantIncentro_graphics, (extra_callback_info1
 	0x10..0x12: switch_NantIncentro_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_NantIncentro_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_NantIncentro_speedyear, 1999) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -7039,7 +7639,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_NantIncentro, 316) {
         loading_speed:                  80; //should be 5*number of doors
         cost_factor:                    108;
         running_cost_factor:            188;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          489 kW;
         weight:                         39;
         cargo_capacity:                 255;
@@ -7060,6 +7660,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_NantIncentro, 316) {
 
     graphics {
         purchase:                       spriteset_NantIncentro_purchase;
+        speed:                          80*param_speedmod/100/8*switch_NantIncentro_speedyear();
+        cost_factor:			108 * param_purchase_cost;
+        running_cost_factor:		188 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_NantIncentro_articulated;
         length:                         switch_NantIncentro_length;
@@ -7125,6 +7728,12 @@ switch (FEAT_ROADVEHS, SELF, switch_NantMekarski_graphics, (extra_callback_info1
 	0x10..0x12: switch_NantMekarski_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_NantMekarski_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_NantMekarski_speedyear, 1876) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -7140,7 +7749,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_NantMekarski, 317) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    12;
         running_cost_factor:            23;
-        speed:                          12*param_speedmod/100 km/h;
+        speed:                          12 km/h;
         power:                          8 kW;
         weight:                         7;
         cargo_capacity:                 31;
@@ -7161,6 +7770,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_NantMekarski, 317) {
 
     graphics {
         purchase:                       spriteset_NantMekarski_purchase;
+        speed:                          12*param_speedmod/100/8*switch_NantMekarski_speedyear();
+        cost_factor:			12 * param_purchase_cost;
+        running_cost_factor:		23 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 31 / cargo_unit_weight;
 
@@ -7229,6 +7841,12 @@ switch (FEAT_ROADVEHS, SELF, switch_NantesTFS1_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_NantesTFS1_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_NantesTFS1_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_NantesTFS1_speedyear, 1985) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -7260,7 +7878,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_NantesTFS1, 318) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    125;
         running_cost_factor:            167;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          737 kW;
         weight:                         52;
         cargo_capacity:                 178;
@@ -7281,6 +7899,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_NantesTFS1, 318) {
 
     graphics {
         purchase:                       spriteset_NantesTFS1_purchase;
+        speed:                          70*param_speedmod/100/8*switch_NantesTFS1_speedyear();
+        cost_factor:			125 * param_purchase_cost;
+        running_cost_factor:		167 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_NantesTFS1_articulated;
         length:                         switch_NantesTFS1_length;
@@ -7351,6 +7972,12 @@ switch (FEAT_ROADVEHS, SELF, switch_NewOLamm_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_NewOLamm_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_NewOLamm_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_NewOLamm_speedyear, 1872) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -7382,7 +8009,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_NewOLamm, 319) {
         loading_speed:                  5; //should be 5*number of doors
         cost_factor:                    12;
         running_cost_factor:            27;
-        speed:                          18*param_speedmod/100 km/h;
+        speed:                          18 km/h;
         power:                          24 kW;
         weight:                         10;
         cargo_capacity:                 20;
@@ -7403,6 +8030,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_NewOLamm, 319) {
 
     graphics {
         purchase:                       spriteset_NewOLamm_purchase;
+        speed:                          18*param_speedmod/100/8*switch_NewOLamm_speedyear();
+        cost_factor:			12 * param_purchase_cost;
+        running_cost_factor:		27 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_NewOLamm_articulated;
         length:                         switch_NewOLamm_length;
@@ -7473,6 +8103,12 @@ switch (FEAT_ROADVEHS, SELF, switch_OsloSL79_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_OsloSL79_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_OsloSL79_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_OsloSL79_speedyear, 1982) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -7504,7 +8140,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_OsloSL79, 320) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    95;
         running_cost_factor:            129;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          590 kW;
         weight:                         33;
         cargo_capacity:                 162;
@@ -7525,6 +8161,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_OsloSL79, 320) {
 
     graphics {
         purchase:                       spriteset_OsloSL79_purchase;
+        speed:                          80*param_speedmod/100/8*switch_OsloSL79_speedyear();
+        cost_factor:			95 * param_purchase_cost;
+        running_cost_factor:		129 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_OsloSL79_articulated;
         length:                         switch_OsloSL79_length;
@@ -7590,6 +8229,12 @@ switch (FEAT_ROADVEHS, SELF, switch_OsloSM53_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_OsloSM53_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_OsloSM53_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_OsloSM53_speedyear, 1952) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -7605,7 +8250,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_OsloSM53, 321) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    42;
         running_cost_factor:            91;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          240 kW;
         weight:                         17;
         cargo_capacity:                 152;
@@ -7626,6 +8271,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_OsloSM53, 321) {
 
     graphics {
         purchase:                       spriteset_OsloSM53_purchase;
+        speed:                          60*param_speedmod/100/8*switch_OsloSM53_speedyear();
+        cost_factor:			42 * param_purchase_cost;
+        running_cost_factor:		91 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 152 / cargo_unit_weight;
 
@@ -7689,6 +8337,12 @@ switch (FEAT_ROADVEHS, SELF, switch_OsloTypeS_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_OsloTypeS_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_OsloTypeS_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_OsloTypeS_speedyear, 1899) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -7704,7 +8358,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_OsloTypeS, 322) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    23;
         running_cost_factor:            37;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          69 kW;
         weight:                         9;
         cargo_capacity:                 40;
@@ -7725,6 +8379,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_OsloTypeS, 322) {
 
     graphics {
         purchase:                       spriteset_OsloTypeS_purchase;
+        speed:                          40*param_speedmod/100/8*switch_OsloTypeS_speedyear();
+        cost_factor:			23 * param_purchase_cost;
+        running_cost_factor:		37 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 40 / cargo_unit_weight;
 
@@ -7788,6 +8445,12 @@ switch (FEAT_ROADVEHS, SELF, switch_OstrVarioLF_graphics, (extra_callback_info1 
 	0x10..0x12: switch_OstrVarioLF_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_OstrVarioLF_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_OstrVarioLF_speedyear, 2004) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -7803,7 +8466,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_OstrVarioLF, 323) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    74;
         running_cost_factor:            88;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          489 kW;
         weight:                         21;
         cargo_capacity:                 114;
@@ -7824,6 +8487,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_OstrVarioLF, 323) {
 
     graphics {
         purchase:                       spriteset_OstrVarioLF_purchase;
+        speed:                          65*param_speedmod/100/8*switch_OstrVarioLF_speedyear();
+        cost_factor:			74 * param_purchase_cost;
+        running_cost_factor:		88 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 114 / cargo_unit_weight;
 
@@ -7897,6 +8563,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PariLammFrancq_graphics, (extra_callback_inf
 	0x10..0x12: switch_PariLammFrancq_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PariLammFrancq_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PariLammFrancq_speedyear, 1874) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -7930,7 +8602,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PariLammFrancq, 324) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    26;
         running_cost_factor:            52;
-        speed:                          20*param_speedmod/100 km/h;
+        speed:                          20 km/h;
         power:                          28 kW;
         weight:                         22;
         cargo_capacity:                 32;
@@ -7951,6 +8623,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PariLammFrancq, 324) {
 
     graphics {
         purchase:                       spriteset_PariLammFrancq_purchase;
+        speed:                          20*param_speedmod/100/8*switch_PariLammFrancq_speedyear();
+        cost_factor:			26 * param_purchase_cost;
+        running_cost_factor:		52 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_PariLammFrancq_articulated;
         length:                         switch_PariLammFrancq_length;
@@ -8016,6 +8691,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PariPurrey_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_PariPurrey_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PariPurrey_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PariPurrey_speedyear, 1898) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -8031,7 +8712,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PariPurrey, 325) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    16;
         running_cost_factor:            43;
-        speed:                          20*param_speedmod/100 km/h;
+        speed:                          20 km/h;
         power:                          16 kW;
         weight:                         14;
         cargo_capacity:                 50;
@@ -8052,6 +8733,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PariPurrey, 325) {
 
     graphics {
         purchase:                       spriteset_PariPurrey_purchase;
+        speed:                          20*param_speedmod/100/8*switch_PariPurrey_speedyear();
+        cost_factor:			16 * param_purchase_cost;
+        running_cost_factor:		43 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 50 / cargo_unit_weight;
 
@@ -8115,6 +8799,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PavlKTM8_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_PavlKTM8_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PavlKTM8_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PavlKTM8_speedyear, 1988) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -8130,7 +8820,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PavlKTM8, 326) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    52;
         running_cost_factor:            105;
-        speed:                          75*param_speedmod/100 km/h;
+        speed:                          75 km/h;
         power:                          272 kW;
         weight:                         20;
         cargo_capacity:                 167;
@@ -8151,6 +8841,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PavlKTM8, 326) {
 
     graphics {
         purchase:                       spriteset_PavlKTM8_purchase;
+        speed:                          75*param_speedmod/100/8*switch_PavlKTM8_speedyear();
+        cost_factor:			52 * param_purchase_cost;
+        running_cost_factor:		105 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 167 / cargo_unit_weight;
 
@@ -8214,6 +8907,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PhilKCar_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_PhilKCar_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PhilKCar_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PhilKCar_speedyear, 1980) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -8229,7 +8928,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PhilKCar, 327) {
         loading_speed:                  15; //should be 5*number of doors
         cost_factor:                    90;
         running_cost_factor:            159;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          536 kW;
         weight:                         58;
         cargo_capacity:                 101;
@@ -8250,6 +8949,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PhilKCar, 327) {
 
     graphics {
         purchase:                       spriteset_PhilKCar_purchase;
+        speed:                          80*param_speedmod/100/8*switch_PhilKCar_speedyear();
+        cost_factor:			90 * param_purchase_cost;
+        running_cost_factor:		159 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 101 / cargo_unit_weight;
 
@@ -8323,6 +9025,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PortPSIUnited100_graphics, (extra_callback_i
 	0x10..0x12: switch_PortPSIUnited100_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PortPSIUnited100_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PortPSIUnited100_speedyear, 2012) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -8356,7 +9064,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PortPSIUnited100, 328) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    90;
         running_cost_factor:            128;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          483 kW;
         weight:                         35;
         cargo_capacity:                 157;
@@ -8377,6 +9085,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PortPSIUnited100, 328) {
 
     graphics {
         purchase:                       spriteset_PortPSIUnited100_purchase;
+        speed:                          70*param_speedmod/100/8*switch_PortPSIUnited100_speedyear();
+        cost_factor:			90 * param_purchase_cost;
+        running_cost_factor:		128 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_PortPSIUnited100_articulated;
         length:                         switch_PortPSIUnited100_length;
@@ -8452,6 +9163,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PortType2_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_PortType2_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PortType2_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PortType2_speedyear, 1996) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -8485,7 +9202,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PortType2, 329) {
         loading_speed:                  80; //should be 5*number of doors
         cost_factor:                    119;
         running_cost_factor:            203;
-        speed:                          88*param_speedmod/100 km/h;
+        speed:                          88 km/h;
         power:                          520 kW;
         weight:                         55;
         cargo_capacity:                 255;
@@ -8506,6 +9223,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PortType2, 329) {
 
     graphics {
         purchase:                       spriteset_PortType2_purchase;
+        speed:                          88*param_speedmod/100/8*switch_PortType2_speedyear();
+        cost_factor:			119 * param_purchase_cost;
+        running_cost_factor:		203 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_PortType2_articulated;
         length:                         switch_PortType2_length;
@@ -8581,6 +9301,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PragSkoda15T_graphics, (extra_callback_info1
 	0x10..0x12: switch_PragSkoda15T_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PragSkoda15T_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PragSkoda15T_speedyear, 2009) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -8614,7 +9340,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PragSkoda15T, 330) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    154;
         running_cost_factor:            181;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          1000 kW;
         weight:                         42;
         cargo_capacity:                 255;
@@ -8635,6 +9361,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PragSkoda15T, 330) {
 
     graphics {
         purchase:                       spriteset_PragSkoda15T_purchase;
+        speed:                          60*param_speedmod/100/8*switch_PragSkoda15T_speedyear();
+        cost_factor:			154 * param_purchase_cost;
+        running_cost_factor:		181 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_PragSkoda15T_articulated;
         length:                         switch_PragSkoda15T_length;
@@ -8700,6 +9429,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PragTatraT2_graphics, (extra_callback_info1 
 	0x10..0x12: switch_PragTatraT2_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PragTatraT2_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PragTatraT2_speedyear, 1955) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -8715,7 +9450,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PragTatraT2, 331) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    40;
         running_cost_factor:            77;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          215 kW;
         weight:                         17;
         cargo_capacity:                 100;
@@ -8736,6 +9471,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PragTatraT2, 331) {
 
     graphics {
         purchase:                       spriteset_PragTatraT2_purchase;
+        speed:                          65*param_speedmod/100/8*switch_PragTatraT2_speedyear();
+        cost_factor:			40 * param_purchase_cost;
+        running_cost_factor:		77 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 100 / cargo_unit_weight;
 
@@ -8804,6 +9542,12 @@ switch (FEAT_ROADVEHS, SELF, switch_PyonTatraT6B5_graphics, (extra_callback_info
 	0x10..0x12: switch_PyonTatraT6B5_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_PyonTatraT6B5_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_PyonTatraT6B5_speedyear, 1991) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -8835,7 +9579,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_PyonTatraT6B5, 332) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    49;
         running_cost_factor:            98;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          245 kW;
         weight:                         19;
         cargo_capacity:                 160;
@@ -8856,6 +9600,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_PyonTatraT6B5, 332) {
 
     graphics {
         purchase:                       spriteset_PyonTatraT6B5_purchase;
+        speed:                          65*param_speedmod/100/8*switch_PyonTatraT6B5_speedyear();
+        cost_factor:			49 * param_purchase_cost;
+        running_cost_factor:		98 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_PyonTatraT6B5_articulated;
         length:                         switch_PyonTatraT6B5_length;
@@ -8921,6 +9668,12 @@ switch (FEAT_ROADVEHS, SELF, switch_RichSprague_graphics, (extra_callback_info1 
 	0x10..0x12: switch_RichSprague_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_RichSprague_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_RichSprague_speedyear, 1886) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -8936,7 +9689,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_RichSprague, 333) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    11;
         running_cost_factor:            41;
-        speed:                          25*param_speedmod/100 km/h;
+        speed:                          25 km/h;
         power:                          15 kW;
         weight:                         5;
         cargo_capacity:                 87;
@@ -8957,6 +9710,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_RichSprague, 333) {
 
     graphics {
         purchase:                       spriteset_RichSprague_purchase;
+        speed:                          25*param_speedmod/100/8*switch_RichSprague_speedyear();
+        cost_factor:			11 * param_purchase_cost;
+        running_cost_factor:		41 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 87 / cargo_unit_weight;
 
@@ -9020,6 +9776,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Rott21_graphics, (extra_callback_info1 & 0xF
 	0x10..0x12: switch_Rott21_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Rott21_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Rott21_speedyear, 1906) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -9035,7 +9797,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Rott21, 334) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    24;
         running_cost_factor:            43;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          81 kW;
         weight:                         10;
         cargo_capacity:                 54;
@@ -9056,6 +9818,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Rott21, 334) {
 
     graphics {
         purchase:                       spriteset_Rott21_purchase;
+        speed:                          40*param_speedmod/100/8*switch_Rott21_speedyear();
+        cost_factor:			24 * param_purchase_cost;
+        running_cost_factor:		43 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 54 / cargo_unit_weight;
 
@@ -9124,6 +9889,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SanFLRV2_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_SanFLRV2_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SanFLRV2_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SanFLRV2_speedyear, 1992) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -9155,7 +9926,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SanFLRV2, 335) {
         loading_speed:                  35; //should be 5*number of doors
         cost_factor:                    89;
         running_cost_factor:            139;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          520 kW;
         weight:                         40;
         cargo_capacity:                 152;
@@ -9176,6 +9947,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SanFLRV2, 335) {
 
     graphics {
         purchase:                       spriteset_SanFLRV2_purchase;
+        speed:                          80*param_speedmod/100/8*switch_SanFLRV2_speedyear();
+        cost_factor:			89 * param_purchase_cost;
+        running_cost_factor:		139 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_SanFLRV2_articulated;
         length:                         switch_SanFLRV2_length;
@@ -9246,6 +10020,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SanFS200_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_SanFS200_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SanFS200_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SanFS200_speedyear, 2018) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -9277,7 +10057,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SanFS200, 336) {
         loading_speed:                  80; //should be 5*number of doors
         cost_factor:                    164;
         running_cost_factor:            173;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          979 kW;
         weight:                         47;
         cargo_capacity:                 232;
@@ -9298,6 +10078,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SanFS200, 336) {
 
     graphics {
         purchase:                       spriteset_SanFS200_purchase;
+        speed:                          70*param_speedmod/100/8*switch_SanFS200_speedyear();
+        cost_factor:			164 * param_purchase_cost;
+        running_cost_factor:		173 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_SanFS200_articulated;
         length:                         switch_SanFS200_length;
@@ -9368,6 +10151,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SanFUSSLRV_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_SanFUSSLRV_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SanFUSSLRV_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SanFUSSLRV_speedyear, 1977) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -9399,7 +10188,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SanFUSSLRV, 337) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    88;
         running_cost_factor:            157;
-        speed:                          110*param_speedmod/100 km/h;
+        speed:                          110 km/h;
         power:                          420 kW;
         weight:                         34;
         cargo_capacity:                 219;
@@ -9420,6 +10209,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SanFUSSLRV, 337) {
 
     graphics {
         purchase:                       spriteset_SanFUSSLRV_purchase;
+        speed:                          110*param_speedmod/100/8*switch_SanFUSSLRV_speedyear();
+        cost_factor:			88 * param_purchase_cost;
+        running_cost_factor:		157 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_SanFUSSLRV_articulated;
         length:                         switch_SanFUSSLRV_length;
@@ -9485,6 +10277,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SappM100_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_SappM100_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SappM100_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SappM100_speedyear, 1961) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -9500,7 +10298,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SappM100, 338) {
         loading_speed:                  15; //should be 5*number of doors
         cost_factor:                    26;
         running_cost_factor:            69;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          107 kW;
         weight:                         14;
         cargo_capacity:                 96;
@@ -9521,6 +10319,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SappM100, 338) {
 
     graphics {
         purchase:                       spriteset_SappM100_purchase;
+        speed:                          60*param_speedmod/100/8*switch_SappM100_speedyear();
+        cost_factor:			26 * param_purchase_cost;
+        running_cost_factor:		69 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 96 / cargo_unit_weight;
 
@@ -9584,6 +10385,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SaraTatraT3YU_graphics, (extra_callback_info
 	0x10..0x12: switch_SaraTatraT3YU_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SaraTatraT3YU_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SaraTatraT3YU_speedyear, 1960) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -9599,7 +10406,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SaraTatraT3YU, 339) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    44;
         running_cost_factor:            75;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          218 kW;
         weight:                         16;
         cargo_capacity:                 100;
@@ -9620,6 +10427,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SaraTatraT3YU, 339) {
 
     graphics {
         purchase:                       spriteset_SaraTatraT3YU_purchase;
+        speed:                          65*param_speedmod/100/8*switch_SaraTatraT3YU_speedyear();
+        cost_factor:			44 * param_purchase_cost;
+        running_cost_factor:		75 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 100 / cargo_unit_weight;
 
@@ -9688,6 +10498,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StPeKrauss_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_StPeKrauss_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StPeKrauss_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StPeKrauss_speedyear, 1880) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -9719,7 +10535,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeKrauss, 340) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    17;
         running_cost_factor:            42;
-        speed:                          25*param_speedmod/100 km/h;
+        speed:                          25 km/h;
         power:                          25 kW;
         weight:                         15;
         cargo_capacity:                 36;
@@ -9740,6 +10556,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeKrauss, 340) {
 
     graphics {
         purchase:                       spriteset_StPeKrauss_purchase;
+        speed:                          25*param_speedmod/100/8*switch_StPeKrauss_speedyear();
+        cost_factor:			17 * param_purchase_cost;
+        running_cost_factor:		42 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_StPeKrauss_articulated;
         length:                         switch_StPeKrauss_length;
@@ -9805,6 +10624,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StPeLM2008_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_StPeLM2008_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StPeLM2008_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StPeLM2008_speedyear, 2008) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -9820,7 +10645,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM2008, 341) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    95;
         running_cost_factor:            97;
-        speed:                          75*param_speedmod/100 km/h;
+        speed:                          75 km/h;
         power:                          652 kW;
         weight:                         20;
         cargo_capacity:                 140;
@@ -9841,6 +10666,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM2008, 341) {
 
     graphics {
         purchase:                       spriteset_StPeLM2008_purchase;
+        speed:                          75*param_speedmod/100/8*switch_StPeLM2008_speedyear();
+        cost_factor:			95 * param_purchase_cost;
+        running_cost_factor:		97 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 140 / cargo_unit_weight;
 
@@ -9909,6 +10737,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StPeLM33_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_StPeLM33_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StPeLM33_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StPeLM33_speedyear, 1933) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -9940,7 +10774,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM33, 342) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    63;
         running_cost_factor:            175;
-        speed:                          50*param_speedmod/100 km/h;
+        speed:                          50 km/h;
         power:                          218 kW;
         weight:                         43;
         cargo_capacity:                 255;
@@ -9961,6 +10795,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM33, 342) {
 
     graphics {
         purchase:                       spriteset_StPeLM33_purchase;
+        speed:                          50*param_speedmod/100/8*switch_StPeLM33_speedyear();
+        cost_factor:			63 * param_purchase_cost;
+        running_cost_factor:		175 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_StPeLM33_articulated;
         length:                         switch_StPeLM33_length;
@@ -10026,6 +10863,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StPeLM49_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_StPeLM49_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StPeLM49_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StPeLM49_speedyear, 1949) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -10041,7 +10884,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM49, 343) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    53;
         running_cost_factor:            145;
-        speed:                          55*param_speedmod/100 km/h;
+        speed:                          55 km/h;
         power:                          245 kW;
         weight:                         28;
         cargo_capacity:                 255;
@@ -10062,6 +10905,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM49, 343) {
 
     graphics {
         purchase:                       spriteset_StPeLM49_purchase;
+        speed:                          55*param_speedmod/100/8*switch_StPeLM49_speedyear();
+        cost_factor:			53 * param_purchase_cost;
+        running_cost_factor:		145 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 255 / cargo_unit_weight;
 
@@ -10125,6 +10971,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StPeLM57_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_StPeLM57_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StPeLM57_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StPeLM57_speedyear, 1957) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -10140,7 +10992,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM57, 344) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    49;
         running_cost_factor:            112;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          245 kW;
         weight:                         19;
         cargo_capacity:                 207;
@@ -10161,6 +11013,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM57, 344) {
 
     graphics {
         purchase:                       spriteset_StPeLM57_purchase;
+        speed:                          65*param_speedmod/100/8*switch_StPeLM57_speedyear();
+        cost_factor:			49 * param_purchase_cost;
+        running_cost_factor:		112 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 207 / cargo_unit_weight;
 
@@ -10224,6 +11079,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StPeLM68_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_StPeLM68_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StPeLM68_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StPeLM68_speedyear, 1968) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -10239,7 +11100,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM68, 345) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    50;
         running_cost_factor:            100;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          245 kW;
         weight:                         22;
         cargo_capacity:                 150;
@@ -10260,6 +11121,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeLM68, 345) {
 
     graphics {
         purchase:                       spriteset_StPeLM68_purchase;
+        speed:                          65*param_speedmod/100/8*switch_StPeLM68_speedyear();
+        cost_factor:			50 * param_purchase_cost;
+        running_cost_factor:		100 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 150 / cargo_unit_weight;
 
@@ -10323,6 +11187,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StPeMB_graphics, (extra_callback_info1 & 0xF
 	0x10..0x12: switch_StPeMB_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StPeMB_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StPeMB_speedyear, 1907) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -10338,7 +11208,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeMB, 346) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    27;
         running_cost_factor:            62;
-        speed:                          45*param_speedmod/100 km/h;
+        speed:                          45 km/h;
         power:                          120 kW;
         weight:                         9;
         cargo_capacity:                 118;
@@ -10359,6 +11229,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StPeMB, 346) {
 
     graphics {
         purchase:                       spriteset_StPeMB_purchase;
+        speed:                          45*param_speedmod/100/8*switch_StPeMB_speedyear();
+        cost_factor:			27 * param_purchase_cost;
+        running_cost_factor:		62 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 118 / cargo_unit_weight;
 
@@ -10442,6 +11315,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StrasEurotram_graphics, (extra_callback_info
 	0x10..0x12: switch_StrasEurotram_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StrasEurotram_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StrasEurotram_speedyear, 1994) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -10479,7 +11358,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StrasEurotram, 347) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    100;
         running_cost_factor:            173;
-        speed:                          65*param_speedmod/100 km/h;
+        speed:                          65 km/h;
         power:                          450 kW;
         weight:                         51;
         cargo_capacity:                 210;
@@ -10500,6 +11379,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StrasEurotram, 347) {
 
     graphics {
         purchase:                       spriteset_StrasEurotram_purchase;
+        speed:                          65*param_speedmod/100/8*switch_StrasEurotram_speedyear();
+        cost_factor:			100 * param_purchase_cost;
+        running_cost_factor:		173 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_StrasEurotram_articulated;
         length:                         switch_StrasEurotram_length;
@@ -10570,6 +11452,12 @@ switch (FEAT_ROADVEHS, SELF, switch_StutSDT8_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_StutSDT8_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_StutSDT8_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_StutSDT8_speedyear, 1981) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -10601,7 +11489,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_StutSDT8, 348) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    171;
         running_cost_factor:            197;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          1190 kW;
         weight:                         55;
         cargo_capacity:                 249;
@@ -10622,6 +11510,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_StutSDT8, 348) {
 
     graphics {
         purchase:                       spriteset_StutSDT8_purchase;
+        speed:                          80*param_speedmod/100/8*switch_StutSDT8_speedyear();
+        cost_factor:			171 * param_purchase_cost;
+        running_cost_factor:		197 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_StutSDT8_articulated;
         length:                         switch_StutSDT8_length;
@@ -10692,6 +11583,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SydnBaldwin_graphics, (extra_callback_info1 
 	0x10..0x12: switch_SydnBaldwin_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SydnBaldwin_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SydnBaldwin_speedyear, 1879) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -10723,7 +11620,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnBaldwin, 349) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    23;
         running_cost_factor:            60;
-        speed:                          20*param_speedmod/100 km/h;
+        speed:                          20 km/h;
         power:                          30 kW;
         weight:                         26;
         cargo_capacity:                 36;
@@ -10744,6 +11641,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnBaldwin, 349) {
 
     graphics {
         purchase:                       spriteset_SydnBaldwin_purchase;
+        speed:                          20*param_speedmod/100/8*switch_SydnBaldwin_speedyear();
+        cost_factor:			23 * param_purchase_cost;
+        running_cost_factor:		60 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_SydnBaldwin_articulated;
         length:                         switch_SydnBaldwin_length;
@@ -10809,6 +11709,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SydnCClass_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_SydnCClass_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SydnCClass_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SydnCClass_speedyear, 1896) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -10824,7 +11730,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnCClass, 350) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    24;
         running_cost_factor:            39;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          146 kW;
         weight:                         9;
         cargo_capacity:                 26;
@@ -10845,6 +11751,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnCClass, 350) {
 
     graphics {
         purchase:                       spriteset_SydnCClass_purchase;
+        speed:                          60*param_speedmod/100/8*switch_SydnCClass_speedyear();
+        cost_factor:			24 * param_purchase_cost;
+        running_cost_factor:		39 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 26 / cargo_unit_weight;
 
@@ -10908,6 +11817,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SydnLPClass_graphics, (extra_callback_info1 
 	0x10..0x12: switch_SydnLPClass_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SydnLPClass_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SydnLPClass_speedyear, 1918) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -10923,7 +11838,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnLPClass, 351) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    43;
         running_cost_factor:            87;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          200 kW;
         weight:                         17;
         cargo_capacity:                 140;
@@ -10944,6 +11859,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnLPClass, 351) {
 
     graphics {
         purchase:                       spriteset_SydnLPClass_purchase;
+        speed:                          60*param_speedmod/100/8*switch_SydnLPClass_speedyear();
+        cost_factor:			43 * param_purchase_cost;
+        running_cost_factor:		87 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 140 / cargo_unit_weight;
 
@@ -11007,6 +11925,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SydnRClass_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_SydnRClass_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SydnRClass_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SydnRClass_speedyear, 1933) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -11022,7 +11946,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnRClass, 352) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    45;
         running_cost_factor:            85;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          160 kW;
         weight:                         18;
         cargo_capacity:                 128;
@@ -11043,6 +11967,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnRClass, 352) {
 
     graphics {
         purchase:                       spriteset_SydnRClass_purchase;
+        speed:                          60*param_speedmod/100/8*switch_SydnRClass_speedyear();
+        cost_factor:			45 * param_purchase_cost;
+        running_cost_factor:		85 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 128 / cargo_unit_weight;
 
@@ -11126,6 +12053,12 @@ switch (FEAT_ROADVEHS, SELF, switch_SydnVariotram_graphics, (extra_callback_info
 	0x10..0x12: switch_SydnVariotram_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_SydnVariotram_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_SydnVariotram_speedyear, 1996) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -11163,7 +12096,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnVariotram, 353) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    108;
         running_cost_factor:            159;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          570 kW;
         weight:                         42;
         cargo_capacity:                 217;
@@ -11184,6 +12117,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_SydnVariotram, 353) {
 
     graphics {
         purchase:                       spriteset_SydnVariotram_purchase;
+        speed:                          70*param_speedmod/100/8*switch_SydnVariotram_speedyear();
+        cost_factor:			108 * param_purchase_cost;
+        running_cost_factor:		159 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_SydnVariotram_articulated;
         length:                         switch_SydnVariotram_length;
@@ -11259,6 +12195,12 @@ switch (FEAT_ROADVEHS, SELF, switch_TacoSkoda10T_graphics, (extra_callback_info1
 	0x10..0x12: switch_TacoSkoda10T_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_TacoSkoda10T_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_TacoSkoda10T_speedyear, 2002) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -11292,7 +12234,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_TacoSkoda10T, 354) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    88;
         running_cost_factor:            122;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          480 kW;
         weight:                         32;
         cargo_capacity:                 157;
@@ -11313,6 +12255,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_TacoSkoda10T, 354) {
 
     graphics {
         purchase:                       spriteset_TacoSkoda10T_purchase;
+        speed:                          70*param_speedmod/100/8*switch_TacoSkoda10T_speedyear();
+        cost_factor:			88 * param_purchase_cost;
+        running_cost_factor:		122 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_TacoSkoda10T_articulated;
         length:                         switch_TacoSkoda10T_length;
@@ -11378,6 +12323,12 @@ switch (FEAT_ROADVEHS, SELF, switch_TashKTM19_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_TashKTM19_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_TashKTM19_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_TashKTM19_speedyear, 1999) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -11393,7 +12344,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_TashKTM19, 355) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    52;
         running_cost_factor:            102;
-        speed:                          75*param_speedmod/100 km/h;
+        speed:                          75 km/h;
         power:                          272 kW;
         weight:                         20;
         cargo_capacity:                 156;
@@ -11414,6 +12365,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_TashKTM19, 355) {
 
     graphics {
         purchase:                       spriteset_TashKTM19_purchase;
+        speed:                          75*param_speedmod/100/8*switch_TashKTM19_speedyear();
+        cost_factor:			52 * param_purchase_cost;
+        running_cost_factor:		102 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 156 / cargo_unit_weight;
 
@@ -11482,6 +12436,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ToroALRV_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_ToroALRV_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ToroALRV_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ToroALRV_speedyear, 1987) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -11513,7 +12473,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroALRV, 356) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    58;
         running_cost_factor:            123;
-        speed:                          110*param_speedmod/100 km/h;
+        speed:                          110 km/h;
         power:                          349 kW;
         weight:                         18;
         cargo_capacity:                 205;
@@ -11534,6 +12494,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroALRV, 356) {
 
     graphics {
         purchase:                       spriteset_ToroALRV_purchase;
+        speed:                          110*param_speedmod/100/8*switch_ToroALRV_speedyear();
+        cost_factor:			58 * param_purchase_cost;
+        running_cost_factor:		123 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_ToroALRV_articulated;
         length:                         switch_ToroALRV_length;
@@ -11604,6 +12567,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ToroBigWitt_graphics, (extra_callback_info1 
 	0x10..0x12: switch_ToroBigWitt_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ToroBigWitt_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ToroBigWitt_speedyear, 1921) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -11635,7 +12604,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroBigWitt, 357) {
         loading_speed:                  40; //should be 5*number of doors
         cost_factor:                    56;
         running_cost_factor:            111;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          200 kW;
         weight:                         32;
         cargo_capacity:                 129;
@@ -11656,6 +12625,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroBigWitt, 357) {
 
     graphics {
         purchase:                       spriteset_ToroBigWitt_purchase;
+        speed:                          60*param_speedmod/100/8*switch_ToroBigWitt_speedyear();
+        cost_factor:			56 * param_purchase_cost;
+        running_cost_factor:		111 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_ToroBigWitt_articulated;
         length:                         switch_ToroBigWitt_length;
@@ -11721,6 +12693,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ToroCLRV_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_ToroCLRV_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ToroCLRV_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ToroCLRV_speedyear, 1978) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -11736,7 +12714,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroCLRV, 358) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    58;
         running_cost_factor:            114;
-        speed:                          110*param_speedmod/100 km/h;
+        speed:                          110 km/h;
         power:                          365 kW;
         weight:                         25;
         cargo_capacity:                 132;
@@ -11757,6 +12735,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroCLRV, 358) {
 
     graphics {
         purchase:                       spriteset_ToroCLRV_purchase;
+        speed:                          110*param_speedmod/100/8*switch_ToroCLRV_speedyear();
+        cost_factor:			58 * param_purchase_cost;
+        running_cost_factor:		114 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 132 / cargo_unit_weight;
 
@@ -11820,6 +12801,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ToroPCA7Class_graphics, (extra_callback_info
 	0x10..0x12: switch_ToroPCA7Class_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ToroPCA7Class_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ToroPCA7Class_speedyear, 1946) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -11835,7 +12822,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroPCA7Class, 359) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    41;
         running_cost_factor:            103;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          220 kW;
         weight:                         18;
         cargo_capacity:                 166;
@@ -11856,6 +12843,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroPCA7Class, 359) {
 
     graphics {
         purchase:                       spriteset_ToroPCA7Class_purchase;
+        speed:                          80*param_speedmod/100/8*switch_ToroPCA7Class_speedyear();
+        cost_factor:			41 * param_purchase_cost;
+        running_cost_factor:		103 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 166 / cargo_unit_weight;
 
@@ -11919,6 +12909,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ToroPCCA1Class_graphics, (extra_callback_inf
 	0x10..0x12: switch_ToroPCCA1Class_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ToroPCCA1Class_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ToroPCCA1Class_speedyear, 1936) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -11934,7 +12930,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroPCCA1Class, 360) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    37;
         running_cost_factor:            88;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          196 kW;
         weight:                         16;
         cargo_capacity:                 149;
@@ -11955,6 +12951,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroPCCA1Class, 360) {
 
     graphics {
         purchase:                       spriteset_ToroPCCA1Class_purchase;
+        speed:                          60*param_speedmod/100/8*switch_ToroPCCA1Class_speedyear();
+        cost_factor:			37 * param_purchase_cost;
+        running_cost_factor:		88 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 149 / cargo_unit_weight;
 
@@ -12038,6 +13037,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ToroTLRV_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_ToroTLRV_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ToroTLRV_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ToroTLRV_speedyear, 2014) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -12075,7 +13080,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroTLRV, 361) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    103;
         running_cost_factor:            181;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          643 kW;
         weight:                         48;
         cargo_capacity:                 251;
@@ -12096,6 +13101,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ToroTLRV, 361) {
 
     graphics {
         purchase:                       spriteset_ToroTLRV_purchase;
+        speed:                          70*param_speedmod/100/8*switch_ToroTLRV_speedyear();
+        cost_factor:			103 * param_purchase_cost;
+        running_cost_factor:		181 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_ToroTLRV_articulated;
         length:                         switch_ToroTLRV_length;
@@ -12171,6 +13179,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Tosa100IIISeries_graphics, (extra_callback_i
 	0x10..0x12: switch_Tosa100IIISeries_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Tosa100IIISeries_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Tosa100IIISeries_speedyear, 2002) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -12204,7 +13218,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Tosa100IIISeries, 362) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    47;
         running_cost_factor:            91;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          240 kW;
         weight:                         26;
         cargo_capacity:                 99;
@@ -12225,6 +13239,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Tosa100IIISeries, 362) {
 
     graphics {
         purchase:                       spriteset_Tosa100IIISeries_purchase;
+        speed:                          60*param_speedmod/100/8*switch_Tosa100IIISeries_speedyear();
+        cost_factor:			47 * param_purchase_cost;
+        running_cost_factor:		91 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_Tosa100IIISeries_articulated;
         length:                         switch_Tosa100IIISeries_length;
@@ -12290,6 +13307,12 @@ switch (FEAT_ROADVEHS, SELF, switch_Tosa200IISeries_graphics, (extra_callback_in
 	0x10..0x12: switch_Tosa200IISeries_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_Tosa200IISeries_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_Tosa200IISeries_speedyear, 1950) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -12305,7 +13328,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_Tosa200IISeries, 363) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    29;
         running_cost_factor:            58;
-        speed:                          50*param_speedmod/100 km/h;
+        speed:                          50 km/h;
         power:                          101 kW;
         weight:                         16;
         cargo_capacity:                 60;
@@ -12326,6 +13349,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_Tosa200IISeries, 363) {
 
     graphics {
         purchase:                       spriteset_Tosa200IISeries_purchase;
+        speed:                          50*param_speedmod/100/8*switch_Tosa200IISeries_speedyear();
+        cost_factor:			29 * param_purchase_cost;
+        running_cost_factor:		58 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 60 / cargo_unit_weight;
 
@@ -12389,6 +13415,12 @@ switch (FEAT_ROADVEHS, SELF, switch_TrieSerie429_graphics, (extra_callback_info1
 	0x10..0x12: switch_TrieSerie429_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_TrieSerie429_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_TrieSerie429_speedyear, 1938) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -12404,7 +13436,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_TrieSerie429, 364) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    32;
         running_cost_factor:            66;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          141 kW;
         weight:                         15;
         cargo_capacity:                 100;
@@ -12425,6 +13457,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_TrieSerie429, 364) {
 
     graphics {
         purchase:                       spriteset_TrieSerie429_purchase;
+        speed:                          40*param_speedmod/100/8*switch_TrieSerie429_speedyear();
+        cost_factor:			32 * param_purchase_cost;
+        running_cost_factor:		66 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 100 / cargo_unit_weight;
 
@@ -12498,6 +13533,12 @@ switch (FEAT_ROADVEHS, SELF, switch_TuniTW6000_graphics, (extra_callback_info1 &
 	0x10..0x12: switch_TuniTW6000_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_TuniTW6000_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_TuniTW6000_speedyear, 1985) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -12531,7 +13572,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_TuniTW6000, 365) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    102;
         running_cost_factor:            137;
-        speed:                          80*param_speedmod/100 km/h;
+        speed:                          80 km/h;
         power:                          582 kW;
         weight:                         39;
         cargo_capacity:                 150;
@@ -12552,6 +13593,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_TuniTW6000, 365) {
 
     graphics {
         purchase:                       spriteset_TuniTW6000_purchase;
+        speed:                          80*param_speedmod/100/8*switch_TuniTW6000_speedyear();
+        cost_factor:			102 * param_purchase_cost;
+        running_cost_factor:		137 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_TuniTW6000_articulated;
         length:                         switch_TuniTW6000_length;
@@ -12617,6 +13661,12 @@ switch (FEAT_ROADVEHS, SELF, switch_VienTw1_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_VienTw1_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_VienTw1_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_VienTw1_speedyear, 1893) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -12632,7 +13682,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienTw1, 366) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    16;
         running_cost_factor:            16;
-        speed:                          15*param_speedmod/100 km/h;
+        speed:                          15 km/h;
         power:                          25 kW;
         weight:                         2;
         cargo_capacity:                 31;
@@ -12653,6 +13703,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienTw1, 366) {
 
     graphics {
         purchase:                       spriteset_VienTw1_purchase;
+        speed:                          15*param_speedmod/100/8*switch_VienTw1_speedyear();
+        cost_factor:			16 * param_purchase_cost;
+        running_cost_factor:		16 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 31 / cargo_unit_weight;
 
@@ -12716,6 +13769,12 @@ switch (FEAT_ROADVEHS, SELF, switch_VienTw2_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_VienTw2_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_VienTw2_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_VienTw2_speedyear, 1903) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -12731,7 +13790,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienTw2, 367) {
         loading_speed:                  20; //should be 5*number of doors
         cost_factor:                    34;
         running_cost_factor:            33;
-        speed:                          20*param_speedmod/100 km/h;
+        speed:                          20 km/h;
         power:                          200 kW;
         weight:                         9;
         cargo_capacity:                 45;
@@ -12752,6 +13811,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienTw2, 367) {
 
     graphics {
         purchase:                       spriteset_VienTw2_purchase;
+        speed:                          20*param_speedmod/100/8*switch_VienTw2_speedyear();
+        cost_factor:			34 * param_purchase_cost;
+        running_cost_factor:		33 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 45 / cargo_unit_weight;
 
@@ -12820,6 +13882,12 @@ switch (FEAT_ROADVEHS, SELF, switch_VienTypeB_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_VienTypeB_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_VienTypeB_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_VienTypeB_speedyear, 1951) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -12851,7 +13919,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienTypeB, 368) {
         loading_speed:                  80; //should be 5*number of doors
         cost_factor:                    68;
         running_cost_factor:            96;
-        speed:                          50*param_speedmod/100 km/h;
+        speed:                          50 km/h;
         power:                          161 kW;
         weight:                         23;
         cargo_capacity:                 145;
@@ -12872,6 +13940,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienTypeB, 368) {
 
     graphics {
         purchase:                       spriteset_VienTypeB_purchase;
+        speed:                          50*param_speedmod/100/8*switch_VienTypeB_speedyear();
+        cost_factor:			68 * param_purchase_cost;
+        running_cost_factor:		96 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_VienTypeB_articulated;
         length:                         switch_VienTypeB_length;
@@ -12947,6 +14018,12 @@ switch (FEAT_ROADVEHS, SELF, switch_VienTypeL_graphics, (extra_callback_info1 & 
 	0x10..0x12: switch_VienTypeL_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_VienTypeL_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_VienTypeL_speedyear, 1973) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -12980,7 +14057,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienTypeL, 369) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    62;
         running_cost_factor:            124;
-        speed:                          40*param_speedmod/100 km/h;
+        speed:                          40 km/h;
         power:                          163 kW;
         weight:                         31;
         cargo_capacity:                 200;
@@ -13001,6 +14078,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienTypeL, 369) {
 
     graphics {
         purchase:                       spriteset_VienTypeL_purchase;
+        speed:                          40*param_speedmod/100/8*switch_VienTypeL_speedyear();
+        cost_factor:			62 * param_purchase_cost;
+        running_cost_factor:		124 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_VienTypeL_articulated;
         length:                         switch_VienTypeL_length;
@@ -13086,6 +14166,12 @@ switch (FEAT_ROADVEHS, SELF, switch_VienULF_graphics, (extra_callback_info1 & 0x
 	0x10..0x12: switch_VienULF_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_VienULF_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_VienULF_speedyear, 1995) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -13123,7 +14209,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienULF, 370) {
         loading_speed:                  50; //should be 5*number of doors
         cost_factor:                    103;
         running_cost_factor:            150;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          566 kW;
         weight:                         43;
         cargo_capacity:                 180;
@@ -13144,6 +14230,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_VienULF, 370) {
 
     graphics {
         purchase:                       spriteset_VienULF_purchase;
+        speed:                          70*param_speedmod/100/8*switch_VienULF_speedyear();
+        cost_factor:			103 * param_purchase_cost;
+        running_cost_factor:		150 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_VienULF_articulated;
         length:                         switch_VienULF_length;
@@ -13229,6 +14318,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ZagrTMK2200_graphics, (extra_callback_info1 
 	0x10..0x12: switch_ZagrTMK2200_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ZagrTMK2200_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ZagrTMK2200_speedyear, 2005) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 
 /////////////////////
 //vehicle callbacks//
@@ -13266,7 +14361,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ZagrTMK2200, 371) {
         loading_speed:                  60; //should be 5*number of doors
         cost_factor:                    102;
         running_cost_factor:            151;
-        speed:                          70*param_speedmod/100 km/h;
+        speed:                          70 km/h;
         power:                          522 kW;
         weight:                         40;
         cargo_capacity:                 202;
@@ -13287,6 +14382,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ZagrTMK2200, 371) {
 
     graphics {
         purchase:                       spriteset_ZagrTMK2200_purchase;
+        speed:                          70*param_speedmod/100/8*switch_ZagrTMK2200_speedyear();
+        cost_factor:			102 * param_purchase_cost;
+        running_cost_factor:		151 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         articulated_part:               switch_ZagrTMK2200_articulated;
         length:                         switch_ZagrTMK2200_length;
@@ -13352,6 +14450,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ZuriBe44_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_ZuriBe44_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ZuriBe44_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ZuriBe44_speedyear, 1940) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -13367,7 +14471,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ZuriBe44, 372) {
         loading_speed:                  30; //should be 5*number of doors
         cost_factor:                    52;
         running_cost_factor:            77;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          288 kW;
         weight:                         18;
         cargo_capacity:                 100;
@@ -13388,6 +14492,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ZuriBe44, 372) {
 
     graphics {
         purchase:                       spriteset_ZuriBe44_purchase;
+        speed:                          60*param_speedmod/100/8*switch_ZuriBe44_speedyear();
+        cost_factor:			52 * param_purchase_cost;
+        running_cost_factor:		77 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 100 / cargo_unit_weight;
 
@@ -13451,6 +14558,12 @@ switch (FEAT_ROADVEHS, SELF, switch_ZuriCe44_graphics, (extra_callback_info1 & 0
 	0x10..0x12: switch_ZuriCe44_default_graphics_gui; //drawn in windows: depot (0x10), vehicle details (0x11) and in vehicle list (0x12)
     switch_ZuriCe44_default_position; //drawn on map
 }
+/* SPEED */
+
+    switch (FEAT_ROADVEHS, SELF, switch_ZuriCe44_speedyear, 1930) {
+	    0..1994: return 5;                        // Until 1994, 
+	    return 6;                                 // After 1994, 
+    }
 	
 //////////////////////
 //vehicle properties//
@@ -13466,7 +14579,7 @@ item (FEAT_ROADVEHS, item_roadvehicle_ZuriCe44, 373) {
         loading_speed:                  10; //should be 5*number of doors
         cost_factor:                    48;
         running_cost_factor:            78;
-        speed:                          60*param_speedmod/100 km/h;
+        speed:                          60 km/h;
         power:                          316 kW;
         weight:                         25;
         cargo_capacity:                 61;
@@ -13487,6 +14600,9 @@ item (FEAT_ROADVEHS, item_roadvehicle_ZuriCe44, 373) {
 
     graphics {
         purchase:                       spriteset_ZuriCe44_purchase;
+        speed:                          60*param_speedmod/100/8*switch_ZuriCe44_speedyear();
+        cost_factor:			48 * param_purchase_cost;
+        running_cost_factor:		78 * param_running_cost;
         //additional_text:              //return string(STR_DESC_);
         cargo_capacity:                 61 / cargo_unit_weight;
 

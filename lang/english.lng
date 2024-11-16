@@ -3,6 +3,21 @@ STR_GRF_NAME			:2CC Tram Set {VERSION}
 STR_GRF_DESCRIPTION		:{BLACK}License: {SILVER}GPL v2
 STR_GRF_URL				:http://dev.openttdcoop.org/projects/trams-2cc
 
+STR_PARAM_PURCHASE_COST             :Purchase cost multiplier
+STR_PARAM_PURCHASE_COST_DESC        :You can use this setting to increase or decrease the purchase costs of the vehicles in this set.
+STR_PARAM_RUNNING_COST              :Running cost multiplier
+STR_PARAM_RUNNING_COST_DESC         :You can use this setting to increase or decrease the running costs of the vehicles in this set.
+STR_PARAM_DIVIDE_64                 :1/64
+STR_PARAM_DIVIDE_32                 :1/32
+STR_PARAM_DIVIDE_16                 :1/16
+STR_PARAM_DIVIDE_8                  :1/8
+STR_PARAM_DIVIDE_4                  :1/4
+STR_PARAM_DIVIDE_2                  :1/2
+STR_PARAM_NORMAL                    :1 (default)
+STR_PARAM_TIMES_2                   :2
+STR_PARAM_TIMES_4                   :4
+STR_PARAM_TIMES_8                   :8
+STR_PARAM_TIMES_16                  :16
 STR_PARAM_REFIT_NAME	:Refit
 STR_PARAM_REFIT_DESC	:Select the refits available for each tram. Choose between passengers only (default), cargo types that are used in towns (passenger, mail and express cargo classes) or all cargo types.
 STR_PARAM_REFIT_PASS	:Passengers only
